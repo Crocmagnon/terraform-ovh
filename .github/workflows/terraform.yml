@@ -18,13 +18,14 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       OVH_APPLICATION_SECRET: ${{ secrets.OVH_APPLICATION_SECRET }}
       OVH_CONSUMER_KEY: ${{ secrets.OVH_CONSUMER_KEY }}
+      OVH_ENDPOINT: ${{ vars.OVH_ENDPOINT }}
+      OVH_APPLICATION_KEY: ${{ vars.OVH_APPLICATION_KEY }}
 
     defaults:
       run:
         shell: bash
 
     steps:
-    - run: echo $OVH_ENDPOINT
     - name: Checkout
       uses: actions/checkout@v4
 
