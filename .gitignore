@@ -1,0 +1,5 @@
+ovh.conf
+.terraform/
+terraform.tfstate*
+.idea
+.mise.toml
