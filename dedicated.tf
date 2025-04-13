@@ -17,28 +17,28 @@ resource "ovh_dedicated_server_reinstall_task" "server_reinstall" {
 
 locals {
   ip             = "37.187.156.9"
-  ip-cidr        = "37.187.156.9/32"
-  allowed-source = "82.65.167.55/32"
+  ip_cidr        = "37.187.156.9/32"
+  allowed_source = "82.65.167.55/32"
 }
 
 resource "ovh_ip_firewall" "mystery_firewall" {
-  ip             = local.ip-cidr
+  ip             = local.ip_cidr
   ip_on_firewall = local.ip
   enabled        = false
 }
 
 # ensure that service remains reachable from allowed IP
-resource "ovh_ip_firewall_rule" "allow-ipv4" {
-  ip             = local.ip-cidr
+resource "ovh_ip_firewall_rule" "allow_ipv4" {
+  ip             = local.ip_cidr
   ip_on_firewall = local.ip
-  source         = local.allowed-source
+  source         = local.allowed_source
   sequence       = 0
   action         = "permit"
   protocol       = "ipv4"
 }
 
-resource "ovh_ip_firewall_rule" "deny-all-other" {
-  ip             = local.ip-cidr
+resource "ovh_ip_firewall_rule" "deny_all_other" {
+  ip             = local.ip_cidr
   ip_on_firewall = local.ip
   sequence       = 19
   action         = "deny"
