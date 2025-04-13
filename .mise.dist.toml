@@ -8,3 +8,4 @@ OVH_CONSUMER_KEY = "xx"
 
 [tools]
 terraform = "1.10"
+tflint = "latest"
