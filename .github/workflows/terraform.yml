@@ -24,6 +24,7 @@ jobs:
         shell: bash
 
     steps:
+    - run: echo $OVH_ENDPOINT
     - name: Checkout
       uses: actions/checkout@v4
 
