@@ -32,6 +32,8 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
       with:
+        # pinning terraform version because OVH doesn't (yet) support newer S3 features.
+        # see https://github.com/ovh/docs/issues/7747
         terraform_version: "<1.11.0"
     
     - name: Terraform Format
