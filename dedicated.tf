@@ -16,8 +16,8 @@ resource "ovh_dedicated_server_reinstall_task" "server_reinstall" {
 }
 
 locals {
-  ip = "37.187.156.9"
-  ip-cidr = "37.187.156.9/32"
+  ip             = "37.187.156.9"
+  ip-cidr        = "37.187.156.9/32"
   allowed-source = "82.65.167.55/32"
 }
 
