@@ -697,3 +697,12 @@ resource "ovh_domain_zone_record" "augendre_info_5357425037" {
   ttl       = 86400
   target    = "nginx.augendre.info."
 }
+
+resource "ovh_domain_zone_record" "augendre_info_go_cname" {
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "go"
+  fieldtype = "CNAME"
+  ttl       = 0
+  target    = "crocmagnon.github.io."
+}
+
