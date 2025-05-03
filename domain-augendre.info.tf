@@ -186,14 +186,6 @@ resource "ovh_domain_zone_record" "augendre_info_5274823402" {
   target    = "nginx"
 }
 
-resource "ovh_domain_zone_record" "augendre_info_5274823403" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "cloud"
-  fieldtype = "CNAME"
-  ttl       = 0
-  target    = "nginx"
-}
-
 resource "ovh_domain_zone_record" "augendre_info_5274823404" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "code"
@@ -498,14 +490,6 @@ resource "ovh_domain_zone_record" "augendre_info_5281160975" {
   target    = "nginx.augendre.info."
 }
 
-resource "ovh_domain_zone_record" "augendre_info_5284047449" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "nextcloud-kibana"
-  fieldtype = "CNAME"
-  ttl       = 0
-  target    = "nginx.augendre.info."
-}
-
 resource "ovh_domain_zone_record" "augendre_info_5286217336" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "internal-static"
@@ -613,30 +597,6 @@ resource "ovh_domain_zone_record" "augendre_info_5317645993" {
 resource "ovh_domain_zone_record" "augendre_info_5325568092" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "prusalink"
-  fieldtype = "CNAME"
-  ttl       = 86400
-  target    = "nginx.augendre.info."
-}
-
-resource "ovh_domain_zone_record" "augendre_info_5333719196" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "cloud-aio"
-  fieldtype = "CNAME"
-  ttl       = 86400
-  target    = "nginx.augendre.info."
-}
-
-resource "ovh_domain_zone_record" "augendre_info_5333719197" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "aio"
-  fieldtype = "CNAME"
-  ttl       = 86400
-  target    = "nginx.augendre.info."
-}
-
-resource "ovh_domain_zone_record" "augendre_info_5333763083" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "cloud-old"
   fieldtype = "CNAME"
   ttl       = 86400
   target    = "nginx.augendre.info."
