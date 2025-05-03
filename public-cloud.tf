@@ -97,3 +97,91 @@ resource "ovh_cloud_project_user_s3_policy" "restic_backups_rw" {
     ]
   })
 }
+
+### S3 for pCloud sync gab
+
+resource "ovh_cloud_project_user" "pcloud_sync_gab" {
+  service_name = ovh_cloud_project.catch_all.id
+  description  = "used to access pcloud_sync_gab"
+  role_names = [
+    "objectstore_operator"
+  ]
+}
+
+resource "ovh_cloud_project_user_s3_credential" "pcloud_sync_gab" {
+  service_name = ovh_cloud_project_user.pcloud_sync_gab.service_name
+  user_id      = ovh_cloud_project_user.pcloud_sync_gab.id
+}
+
+resource "ovh_cloud_project_storage" "pcloud_sync_gab" {
+  service_name = ovh_cloud_project.catch_all.id
+  region_name  = "GRA"
+  name         = "pcloud-sync-gab-gaugendre"
+}
+
+resource "ovh_cloud_project_user_s3_policy" "pcloud_sync_gab_rw" {
+  service_name = ovh_cloud_project_user.pcloud_sync_gab.service_name
+  user_id      = ovh_cloud_project_user.pcloud_sync_gab.id
+  policy = jsonencode({
+    Statement = [
+      {
+        Sid    = "pCloudSyncGabRW"
+        Effect = "Allow"
+        Action = [
+          "s3:GetObject",
+          "s3:PutObject",
+          "s3:DeleteObject",
+          "s3:ListBucket",
+        ]
+        Resource = [
+          "arn:aws:s3:::${ovh_cloud_project_storage.pcloud_sync_gab.name}",
+          "arn:aws:s3:::${ovh_cloud_project_storage.pcloud_sync_gab.name}/*",
+        ]
+      },
+    ]
+  })
+}
+
+### S3 for pCloud sync claire
+
+resource "ovh_cloud_project_user" "pcloud_sync_claire" {
+  service_name = ovh_cloud_project.catch_all.id
+  description  = "used to access pcloud_sync_claire"
+  role_names = [
+    "objectstore_operator"
+  ]
+}
+
+resource "ovh_cloud_project_user_s3_credential" "pcloud_sync_claire" {
+  service_name = ovh_cloud_project_user.pcloud_sync_claire.service_name
+  user_id      = ovh_cloud_project_user.pcloud_sync_claire.id
+}
+
+resource "ovh_cloud_project_storage" "pcloud_sync_claire" {
+  service_name = ovh_cloud_project.catch_all.id
+  region_name  = "GRA"
+  name         = "pcloud-sync-claire-gaugendre"
+}
+
+resource "ovh_cloud_project_user_s3_policy" "pcloud_sync_claire_rw" {
+  service_name = ovh_cloud_project_user.pcloud_sync_claire.service_name
+  user_id      = ovh_cloud_project_user.pcloud_sync_claire.id
+  policy = jsonencode({
+    Statement = [
+      {
+        Sid    = "pCloudSyncClaireRW"
+        Effect = "Allow"
+        Action = [
+          "s3:GetObject",
+          "s3:PutObject",
+          "s3:DeleteObject",
+          "s3:ListBucket",
+        ]
+        Resource = [
+          "arn:aws:s3:::${ovh_cloud_project_storage.pcloud_sync_claire.name}",
+          "arn:aws:s3:::${ovh_cloud_project_storage.pcloud_sync_claire.name}/*",
+        ]
+      },
+    ]
+  })
+}
