@@ -132,6 +132,7 @@ resource "ovh_cloud_project_user_s3_policy" "pcloud_sync_gab_rw" {
           "s3:PutObject",
           "s3:DeleteObject",
           "s3:ListBucket",
+          "s3:PutObjectAcl",
         ]
         Resource = [
           "arn:aws:s3:::${ovh_cloud_project_storage.pcloud_sync_gab.name}",
@@ -176,6 +177,7 @@ resource "ovh_cloud_project_user_s3_policy" "pcloud_sync_claire_rw" {
           "s3:PutObject",
           "s3:DeleteObject",
           "s3:ListBucket",
+          "s3:PutObjectAcl",
         ]
         Resource = [
           "arn:aws:s3:::${ovh_cloud_project_storage.pcloud_sync_claire.name}",
