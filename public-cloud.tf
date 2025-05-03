@@ -86,6 +86,7 @@ resource "ovh_cloud_project_user_s3_policy" "restic_backups_rw" {
         Action = [
           "s3:GetObject",
           "s3:PutObject",
+          "s3:DeleteObject",
           "s3:ListBucket",
         ]
         Resource = [
