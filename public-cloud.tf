@@ -8,6 +8,8 @@ resource "ovh_cloud_project" "catch_all" {
   ovh_subsidiary = null
 }
 
+### S3 for terraform backend
+
 resource "ovh_cloud_project_user" "terraform" {
   service_name = ovh_cloud_project.catch_all.id
   description  = "used to access terraform state"
@@ -46,6 +48,49 @@ resource "ovh_cloud_project_user_s3_policy" "terraform_rw" {
         Resource = [
           "arn:aws:s3:::${ovh_cloud_project_storage.storage.name}",
           "arn:aws:s3:::${ovh_cloud_project_storage.storage.name}/*",
+        ]
+      },
+    ]
+  })
+}
+
+### S3 for restic backups
+
+resource "ovh_cloud_project_user" "restic_backups" {
+  service_name = ovh_cloud_project.catch_all.id
+  description  = "used to access restic backups"
+  role_names = [
+    "objectstore_operator"
+  ]
+}
+
+resource "ovh_cloud_project_user_s3_credential" "restic_backups" {
+  service_name = ovh_cloud_project_user.restic_backups.service_name
+  user_id      = ovh_cloud_project_user.restic_backups.id
+}
+
+resource "ovh_cloud_project_storage" "restic_backups" {
+  service_name = ovh_cloud_project.catch_all.id
+  region_name  = "GRA"
+  name         = "restic-backups-gaugendre"
+}
+
+resource "ovh_cloud_project_user_s3_policy" "restic_backups_rw" {
+  service_name = ovh_cloud_project_user.restic_backups.service_name
+  user_id      = ovh_cloud_project_user.restic_backups.id
+  policy = jsonencode({
+    Statement = [
+      {
+        Sid    = "ResticBackupsRW"
+        Effect = "Allow"
+        Action = [
+          "s3:GetObject",
+          "s3:PutObject",
+          "s3:ListBucket",
+        ]
+        Resource = [
+          "arn:aws:s3:::${ovh_cloud_project_storage.restic_backups.name}",
+          "arn:aws:s3:::${ovh_cloud_project_storage.restic_backups.name}/*",
         ]
       },
     ]
