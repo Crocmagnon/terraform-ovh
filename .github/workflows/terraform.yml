@@ -20,6 +20,7 @@ jobs:
       OVH_CONSUMER_KEY: ${{ secrets.OVH_CONSUMER_KEY }}
       OVH_ENDPOINT: ${{ vars.OVH_ENDPOINT }}
       OVH_APPLICATION_KEY: ${{ vars.OVH_APPLICATION_KEY }}
+      GIT_CRYPT_KEY: ${{ secrets.GIT_CRYPT_KEY }}
 
     defaults:
       run:
@@ -28,6 +29,12 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
+
+    - name: git-crypt
+      run: |-
+        sudo apt install git-crypt
+        echo $GIT_CRYPT_KEY | base64 -d > /tmp/git-crypt-key
+        git crypt unlock /tmp/git-crypt-key
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3

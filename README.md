@@ -13,12 +13,17 @@ A Github Action is configured to apply all state changes on pushes to main.
 1. Clone the repo
 2. `cp .mise.dist.toml .mise.toml`
 3. Edit the values in the mise config files.
-4. `terraform init`
-5. `terraform plan`
+4. `git crypt unlock /path/to/key`
+5. `terraform init`
+6. `terraform plan`
 
 ### Where to find secrets?
 
-In Bitwarden, note "terraform-ovh config".
+In Bitwarden, note "terraform-ovh config" and note "terraform-ovh git-crypt key base64".
+
+```bash
+echo "note content" | base64 -d > /tmp/git-crypt-key
+```
 
 ### How to generate new secrets?
 
