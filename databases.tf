@@ -40,9 +40,9 @@ resource "ovh_hosting_privatedatabase_database" "miniflux" {
 }
 
 resource "ovh_hosting_privatedatabase_user" "miniflux" {
-  service_name  = data.ovh_hosting_privatedatabase.psql.service_name
-  user_name     = "miniflux"
-  password      = var.psql_miniflux_password
+  service_name = data.ovh_hosting_privatedatabase.psql.service_name
+  user_name    = "miniflux"
+  password     = var.psql_miniflux_password
 }
 
 resource "ovh_hosting_privatedatabase_user_grant" "miniflux_grant" {
@@ -64,9 +64,9 @@ resource "ovh_hosting_privatedatabase_database" "manuels" {
 }
 
 resource "ovh_hosting_privatedatabase_user" "manuels" {
-  service_name  = data.ovh_hosting_privatedatabase.psql.service_name
-  user_name     = "manuels"
-  password      = var.psql_manuels_password
+  service_name = data.ovh_hosting_privatedatabase.psql.service_name
+  user_name    = "manuels"
+  password     = var.psql_manuels_password
 }
 
 resource "ovh_hosting_privatedatabase_user_grant" "manuels_grant" {
@@ -88,9 +88,9 @@ resource "ovh_hosting_privatedatabase_database" "paperless" {
 }
 
 resource "ovh_hosting_privatedatabase_user" "paperless" {
-  service_name  = data.ovh_hosting_privatedatabase.psql.service_name
-  user_name     = "paperless"
-  password      = var.psql_paperless_password
+  service_name = data.ovh_hosting_privatedatabase.psql.service_name
+  user_name    = "paperless"
+  password     = var.psql_paperless_password
 }
 
 resource "ovh_hosting_privatedatabase_user_grant" "paperless_grant" {
