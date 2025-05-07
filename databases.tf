@@ -10,6 +10,15 @@ resource "ovh_hosting_privatedatabase_whitelist" "psql_home" {
   sftp         = false
 }
 
+resource "ovh_hosting_privatedatabase_whitelist" "psql_vps_1" {
+  for_each     = { for k, v in data.ovh_vps.vps_1.ips : k => v if strcontains(k, ".")} # cheap ipv4 vs ipv6 filter
+  service_name = data.ovh_hosting_privatedatabase.psql.service_name
+  ip           = each.key
+  name         = "vps-1"
+  service      = true
+  sftp         = false
+}
+
 /*
 resource "ovh_hosting_privatedatabase_whitelist" "psql_vpn_eu_1" {
   service_name = data.ovh_hosting_privatedatabase.psql.service_name
