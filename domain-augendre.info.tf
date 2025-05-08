@@ -178,8 +178,8 @@ resource "ovh_domain_zone_record" "augendre_info_5274823400" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "charasheet"
   fieldtype = "CNAME"
-  ttl       = 0
-  target    = "nginx"
+  ttl       = 60
+  target    = "common"
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5274823404" {
@@ -474,7 +474,7 @@ resource "ovh_domain_zone_record" "augendre_info_5281160975" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "portainer"
   fieldtype = "CNAME"
-  ttl       = 0
+  ttl       = 60
   target    = "nginx.augendre.info."
 }
 
