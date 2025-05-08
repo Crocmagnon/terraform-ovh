@@ -2,6 +2,10 @@ data "ovh_domain_zone" "augendre_info" {
   name = "augendre.info"
 }
 
+locals {
+  home_ip = "82.65.167.55"
+}
+
 resource "ovh_domain_zone_record" "augendre_info_5274823378" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = ""
@@ -39,7 +43,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823382" {
   subdomain = ""
   fieldtype = "A"
   ttl       = 0
-  target    = "82.65.167.55"
+  target    = local.home_ip
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5274823383" {
@@ -94,7 +98,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823389" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "*.gc"
   fieldtype = "CNAME"
-  ttl       = 0
+  ttl       = 60
   target    = "nginx"
 }
 
@@ -150,7 +154,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823397" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "autoconfig"
   fieldtype = "CNAME"
-  ttl       = 0
+  ttl       = 60
   target    = "nginx"
 }
 
@@ -158,7 +162,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823398" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "bin"
   fieldtype = "CNAME"
-  ttl       = 0
+  ttl       = 60
   target    = "nginx"
 }
 
@@ -166,7 +170,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823399" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "blog"
   fieldtype = "CNAME"
-  ttl       = 0
+  ttl       = 60
   target    = "nginx"
 }
 
@@ -178,19 +182,11 @@ resource "ovh_domain_zone_record" "augendre_info_5274823400" {
   target    = "nginx"
 }
 
-resource "ovh_domain_zone_record" "augendre_info_5274823402" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "checkout"
-  fieldtype = "CNAME"
-  ttl       = 0
-  target    = "nginx"
-}
-
 resource "ovh_domain_zone_record" "augendre_info_5274823404" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "code"
   fieldtype = "CNAME"
-  ttl       = 0
+  ttl       = 60
   target    = "nginx"
 }
 
@@ -198,7 +194,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823406" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "cv-gabriel"
   fieldtype = "CNAME"
-  ttl       = 0
+  ttl       = 60
   target    = "nginx"
 }
 
@@ -206,7 +202,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823408" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "display"
   fieldtype = "CNAME"
-  ttl       = 0
+  ttl       = 60
   target    = "nginx"
 }
 
@@ -230,7 +226,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823412" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "fournitures"
   fieldtype = "CNAME"
-  ttl       = 0
+  ttl       = 60
   target    = "nginx"
 }
 
@@ -238,7 +234,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823413" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "friendsmap"
   fieldtype = "CNAME"
-  ttl       = 0
+  ttl       = 60
   target    = "nginx"
 }
 
@@ -246,7 +242,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823414" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "gabriel"
   fieldtype = "CNAME"
-  ttl       = 0
+  ttl       = 60
   target    = "nginx"
 }
 
@@ -254,7 +250,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823415" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "gc"
   fieldtype = "CNAME"
-  ttl       = 0
+  ttl       = 60
   target    = "nginx"
 }
 
@@ -262,7 +258,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823416" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "git"
   fieldtype = "CNAME"
-  ttl       = 0
+  ttl       = 60
   target    = "nginx"
 }
 
@@ -270,7 +266,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823418" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "hass"
   fieldtype = "CNAME"
-  ttl       = 0
+  ttl       = 60
   target    = "nginx"
 }
 
@@ -310,7 +306,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823424" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "mail"
   fieldtype = "CNAME"
-  ttl       = 0
+  ttl       = 60
   target    = "nginx"
 }
 
@@ -318,7 +314,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823425" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "manuels"
   fieldtype = "CNAME"
-  ttl       = 0
+  ttl       = 60
   target    = "nginx"
 }
 
@@ -351,22 +347,14 @@ resource "ovh_domain_zone_record" "augendre_info_5274823430" {
   subdomain = "nginx"
   fieldtype = "A"
   ttl       = 0
-  target    = "82.65.167.55"
-}
-
-resource "ovh_domain_zone_record" "augendre_info_5274823431" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "office"
-  fieldtype = "CNAME"
-  ttl       = 0
-  target    = "nginx"
+  target    = local.home_ip
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5274823432" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "paste"
   fieldtype = "CNAME"
-  ttl       = 0
+  ttl       = 60
   target    = "nginx"
 }
 
@@ -398,7 +386,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823437" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "reader"
   fieldtype = "CNAME"
-  ttl       = 0
+  ttl       = 60
   target    = "nginx"
 }
 
@@ -414,7 +402,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823440" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "static"
   fieldtype = "CNAME"
-  ttl       = 0
+  ttl       = 60
   target    = "nginx"
 }
 
@@ -430,7 +418,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823442" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "tcl"
   fieldtype = "CNAME"
-  ttl       = 0
+  ttl       = 60
   target    = "nginx"
 }
 
@@ -438,7 +426,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823443" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "test"
   fieldtype = "CNAME"
-  ttl       = 0
+  ttl       = 60
   target    = "nginx"
 }
 
@@ -470,7 +458,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823447" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "voyages"
   fieldtype = "CNAME"
-  ttl       = 0
+  ttl       = 60
   target    = "nginx"
 }
 
@@ -478,7 +466,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823448" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "wallabag"
   fieldtype = "CNAME"
-  ttl       = 0
+  ttl       = 60
   target    = "nginx"
 }
 
@@ -494,15 +482,7 @@ resource "ovh_domain_zone_record" "augendre_info_5286217336" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "internal-static"
   fieldtype = "CNAME"
-  ttl       = 0
-  target    = "nginx.augendre.info."
-}
-
-resource "ovh_domain_zone_record" "augendre_info_5288599880" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "charasheet-go"
-  fieldtype = "CNAME"
-  ttl       = 0
+  ttl       = 60
   target    = "nginx.augendre.info."
 }
 
@@ -514,19 +494,11 @@ resource "ovh_domain_zone_record" "augendre_info_5293296439" {
   target    = "82.66.199.43"
 }
 
-resource "ovh_domain_zone_record" "augendre_info_5295045733" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "kirby"
-  fieldtype = "CNAME"
-  ttl       = 86400
-  target    = "nginx.augendre.info."
-}
-
 resource "ovh_domain_zone_record" "augendre_info_5295051062" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "mariage"
   fieldtype = "CNAME"
-  ttl       = 86400
+  ttl       = 60
   target    = "nginx.augendre.info."
 }
 
@@ -534,15 +506,7 @@ resource "ovh_domain_zone_record" "augendre_info_5295054193" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "ghost"
   fieldtype = "CNAME"
-  ttl       = 86400
-  target    = "nginx.augendre.info."
-}
-
-resource "ovh_domain_zone_record" "augendre_info_5296078649" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "rustdesk"
-  fieldtype = "CNAME"
-  ttl       = 86400
+  ttl       = 60
   target    = "nginx.augendre.info."
 }
 
@@ -550,7 +514,7 @@ resource "ovh_domain_zone_record" "augendre_info_5302259536" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "qr"
   fieldtype = "CNAME"
-  ttl       = 86400
+  ttl       = 60
   target    = "nginx.augendre.info."
 }
 
@@ -558,15 +522,7 @@ resource "ovh_domain_zone_record" "augendre_info_5302259539" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "qrcode"
   fieldtype = "CNAME"
-  ttl       = 86400
-  target    = "nginx.augendre.info."
-}
-
-resource "ovh_domain_zone_record" "augendre_info_5310258599" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "netdisco"
-  fieldtype = "CNAME"
-  ttl       = 86400
+  ttl       = 60
   target    = "nginx.augendre.info."
 }
 
@@ -574,7 +530,7 @@ resource "ovh_domain_zone_record" "augendre_info_5314899154" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "voyages-lois"
   fieldtype = "CNAME"
-  ttl       = 86400
+  ttl       = 60
   target    = "nginx.augendre.info."
 }
 
@@ -598,7 +554,7 @@ resource "ovh_domain_zone_record" "augendre_info_5325568092" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "prusalink"
   fieldtype = "CNAME"
-  ttl       = 86400
+  ttl       = 60
   target    = "nginx.augendre.info."
 }
 
@@ -606,7 +562,7 @@ resource "ovh_domain_zone_record" "augendre_info_5337967994" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "paperless"
   fieldtype = "CNAME"
-  ttl       = 86400
+  ttl       = 60
   target    = "nginx.augendre.info."
 }
 
@@ -614,7 +570,7 @@ resource "ovh_domain_zone_record" "augendre_info_5345300513" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "stirlingpdf"
   fieldtype = "CNAME"
-  ttl       = 86400
+  ttl       = 60
   target    = "nginx.augendre.info."
 }
 
@@ -622,7 +578,7 @@ resource "ovh_domain_zone_record" "augendre_info_5345544778" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "esphome"
   fieldtype = "CNAME"
-  ttl       = 86400
+  ttl       = 60
   target    = "nginx.augendre.info."
 }
 
@@ -642,27 +598,37 @@ resource "ovh_domain_zone_record" "augendre_info_5346028597" {
   target    = "_acme-challenge.qe7jfmivnxuislrlgljlour4eiv0vbe7.ui.nabu.casa."
 }
 
-resource "ovh_domain_zone_record" "augendre_info_5356213034" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "ech"
-  fieldtype = "CNAME"
-  ttl       = 86400
-  target    = "nginx.augendre.info."
-}
-
-resource "ovh_domain_zone_record" "augendre_info_5357425037" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "rclone"
-  fieldtype = "CNAME"
-  ttl       = 86400
-  target    = "nginx.augendre.info."
-}
-
 resource "ovh_domain_zone_record" "augendre_info_go_cname" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "go"
   fieldtype = "CNAME"
   ttl       = 0
   target    = "crocmagnon.github.io."
+}
+
+resource "ovh_domain_zone_record" "augendre_info_common_nginx" {
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "common"
+  fieldtype = "A"
+  ttl       = 60
+  target    = local.home_ip
+}
+
+resource "ovh_domain_zone_record" "augendre_info_common_vps_1" {
+  for_each  = { for k, v in data.ovh_vps.vps_1.ips : k => v if strcontains(k, ".") } # cheap ipv4 vs ipv6 filter
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "common"
+  fieldtype = "A"
+  ttl       = 60
+  target    = each.key
+}
+
+resource "ovh_domain_zone_record" "augendre_info_vps_1" {
+  for_each  = { for k, v in data.ovh_vps.vps_1.ips : k => v if strcontains(k, ".") } # cheap ipv4 vs ipv6 filter
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "vps-1"
+  fieldtype = "A"
+  ttl       = 60
+  target    = each.key
 }
 
