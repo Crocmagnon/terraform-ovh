@@ -160,7 +160,7 @@ resource "ovh_cloud_project_user_s3_credential" "restic_vps_backups" {
 
 resource "ovh_cloud_project_storage" "restic_vps_backups" {
   service_name = ovh_cloud_project.catch_all.id
-  region_name  = "GRA"
+  region_name  = "SBG"
   name         = "restic-vps-backups-gaugendre"
 }
 
