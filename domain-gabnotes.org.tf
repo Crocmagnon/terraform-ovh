@@ -38,7 +38,7 @@ resource "ovh_domain_zone_record" "gabnotes_org_5295328887" {
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = ""
   fieldtype = "A"
-  ttl       = 0
+  ttl       = 60
   target    = "82.65.167.55"
 }
 
@@ -110,8 +110,8 @@ resource "ovh_domain_zone_record" "gabnotes_org_5295328896" {
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = "gc"
   fieldtype = "CNAME"
-  ttl       = 0
-  target    = "nginx.augendre.info."
+  ttl       = 60
+  target    = "gc.augendre.info."
 }
 
 resource "ovh_domain_zone_record" "gabnotes_org_5295328898" {
@@ -174,6 +174,6 @@ resource "ovh_domain_zone_record" "gabnotes_org_5295328905" {
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = "www"
   fieldtype = "CNAME"
-  ttl       = 0
+  ttl       = 60
   target    = "nginx.augendre.info."
 }

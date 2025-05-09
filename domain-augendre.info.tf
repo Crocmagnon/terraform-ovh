@@ -99,7 +99,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823389" {
   subdomain = "*.gc"
   fieldtype = "CNAME"
   ttl       = 60
-  target    = "nginx"
+  target    = "vps-1"
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5274823390" {
@@ -163,7 +163,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823398" {
   subdomain = "bin"
   fieldtype = "CNAME"
   ttl       = 60
-  target    = "nginx"
+  target    = "vps-1"
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5274823399" {
@@ -179,7 +179,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823400" {
   subdomain = "charasheet"
   fieldtype = "CNAME"
   ttl       = 60
-  target    = "common"
+  target    = "vps-1"
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5274823404" {
@@ -187,7 +187,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823404" {
   subdomain = "code"
   fieldtype = "CNAME"
   ttl       = 60
-  target    = "nginx"
+  target    = "vps-1"
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5274823406" {
@@ -251,7 +251,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823415" {
   subdomain = "gc"
   fieldtype = "CNAME"
   ttl       = 60
-  target    = "nginx"
+  target    = "vps-1"
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5274823416" {
@@ -259,7 +259,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823416" {
   subdomain = "git"
   fieldtype = "CNAME"
   ttl       = 60
-  target    = "nginx"
+  target    = "vps-1"
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5274823418" {
@@ -315,7 +315,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823425" {
   subdomain = "manuels"
   fieldtype = "CNAME"
   ttl       = 60
-  target    = "nginx"
+  target    = "vps-1"
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5274823426" {
@@ -419,7 +419,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823442" {
   subdomain = "tcl"
   fieldtype = "CNAME"
   ttl       = 60
-  target    = "nginx"
+  target    = "common"
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5274823443" {
@@ -563,7 +563,7 @@ resource "ovh_domain_zone_record" "augendre_info_5337967994" {
   subdomain = "paperless"
   fieldtype = "CNAME"
   ttl       = 60
-  target    = "nginx.augendre.info."
+  target    = "vps-1"
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5345300513" {
@@ -571,15 +571,7 @@ resource "ovh_domain_zone_record" "augendre_info_5345300513" {
   subdomain = "stirlingpdf"
   fieldtype = "CNAME"
   ttl       = 60
-  target    = "nginx.augendre.info."
-}
-
-resource "ovh_domain_zone_record" "augendre_info_5345544778" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "esphome"
-  fieldtype = "CNAME"
-  ttl       = 60
-  target    = "nginx.augendre.info."
+  target    = "vps-1"
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5346028581" {
