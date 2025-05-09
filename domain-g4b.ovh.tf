@@ -35,11 +35,12 @@ resource "ovh_domain_zone_record" "g4b_ovh_5274823139" {
 }
 
 resource "ovh_domain_zone_record" "g4b_ovh_5274823140" {
+  for_each  = { for k, v in data.ovh_vps.vps_1.ips : k => v if strcontains(k, ".") } # cheap ipv4 vs ipv6 filter
   zone      = data.ovh_domain_zone.g4b_ovh.name
   subdomain = ""
   fieldtype = "A"
-  ttl       = 0
-  target    = "82.65.167.55"
+  ttl       = 60
+  target    = each.key
 }
 
 resource "ovh_domain_zone_record" "g4b_ovh_5274823141" {

@@ -86,8 +86,8 @@ resource "ovh_domain_zone_record" "coccomagnard_fr_5274823166" {
   zone      = data.ovh_domain_zone.coccomagnard_fr.name
   subdomain = "*.gc"
   fieldtype = "CNAME"
-  ttl       = 0
-  target    = "nginx.augendre.info."
+  ttl       = 60
+  target    = "gc.augendre.info."
 }
 
 resource "ovh_domain_zone_record" "coccomagnard_fr_5274823167" {
@@ -166,8 +166,8 @@ resource "ovh_domain_zone_record" "coccomagnard_fr_5274823176" {
   zone      = data.ovh_domain_zone.coccomagnard_fr.name
   subdomain = "gc"
   fieldtype = "CNAME"
-  ttl       = 0
-  target    = "nginx.augendre.info."
+  ttl       = 60
+  target    = "gc.augendre.info."
 }
 
 resource "ovh_domain_zone_record" "coccomagnard_fr_5274823177" {
@@ -222,7 +222,7 @@ resource "ovh_domain_zone_record" "coccomagnard_fr_5274823183" {
   zone      = data.ovh_domain_zone.coccomagnard_fr.name
   subdomain = "voyages"
   fieldtype = "CNAME"
-  ttl       = 0
+  ttl       = 60
   target    = "voyages.augendre.info."
 }
 
