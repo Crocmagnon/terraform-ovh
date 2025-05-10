@@ -478,14 +478,6 @@ resource "ovh_domain_zone_record" "augendre_info_portainer_vps" {
   target    = "vps-1"
 }
 
-resource "ovh_domain_zone_record" "augendre_info_5286217336" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "internal-static"
-  fieldtype = "CNAME"
-  ttl       = 60
-  target    = "vps-1"
-}
-
 resource "ovh_domain_zone_record" "augendre_info_5293296439" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "cercie"
