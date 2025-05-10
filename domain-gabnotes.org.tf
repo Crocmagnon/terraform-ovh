@@ -34,12 +34,13 @@ resource "ovh_domain_zone_record" "gabnotes_org_5295328886" {
   target    = "10 aspmx1.migadu.com."
 }
 
-resource "ovh_domain_zone_record" "gabnotes_org_5295328887" {
+resource "ovh_domain_zone_record" "gabnotes_org_apex" {
+  for_each  = { for k, v in data.ovh_vps.vps_1.ips : k => v if strcontains(k, ".") } # cheap ipv4 vs ipv6 filter
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = ""
   fieldtype = "A"
   ttl       = 60
-  target    = "82.65.167.55"
+  target    = each.key
 }
 
 resource "ovh_domain_zone_record" "gabnotes_org_5295328888" {
@@ -175,5 +176,5 @@ resource "ovh_domain_zone_record" "gabnotes_org_5295328905" {
   subdomain = "www"
   fieldtype = "CNAME"
   ttl       = 60
-  target    = "nginx.augendre.info."
+  target    = "vps-1.augendre.info."
 }
