@@ -171,7 +171,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823399" {
   subdomain = "blog"
   fieldtype = "CNAME"
   ttl       = 60
-  target    = "nginx"
+  target    = "vps-1"
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5274823400" {
@@ -196,14 +196,6 @@ resource "ovh_domain_zone_record" "augendre_info_5274823406" {
   fieldtype = "CNAME"
   ttl       = 60
   target    = "vps-1"
-}
-
-resource "ovh_domain_zone_record" "augendre_info_5274823408" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "display"
-  fieldtype = "CNAME"
-  ttl       = 60
-  target    = "nginx"
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5274823409" {
@@ -435,7 +427,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823447" {
   subdomain = "voyages"
   fieldtype = "CNAME"
   ttl       = 60
-  target    = "nginx"
+  target    = "vps-1"
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5274823448" {
@@ -475,7 +467,7 @@ resource "ovh_domain_zone_record" "augendre_info_5295054193" {
   subdomain = "ghost"
   fieldtype = "CNAME"
   ttl       = 60
-  target    = "nginx.augendre.info."
+  target    = "vps-1"
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5302259536" {
@@ -499,7 +491,7 @@ resource "ovh_domain_zone_record" "augendre_info_5314899154" {
   subdomain = "voyages-lois"
   fieldtype = "CNAME"
   ttl       = 60
-  target    = "nginx.augendre.info."
+  target    = "vps-1"
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5317645990" {
