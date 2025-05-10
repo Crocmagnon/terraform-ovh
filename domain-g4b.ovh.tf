@@ -138,27 +138,3 @@ resource "ovh_domain_zone_record" "g4b_ovh_5274823152" {
   ttl       = 0
   target    = "key3.g4b.ovh._domainkey.migadu.com."
 }
-
-resource "ovh_domain_zone_record" "g4b_ovh_5274823153" {
-  zone      = data.ovh_domain_zone.g4b_ovh.name
-  subdomain = "potain3"
-  fieldtype = "TXT"
-  ttl       = 0
-  target    = "https://static.augendre.info/potain3/"
-}
-
-resource "ovh_domain_zone_record" "g4b_ovh_5274823154" {
-  zone      = data.ovh_domain_zone.g4b_ovh.name
-  subdomain = "status"
-  fieldtype = "A"
-  ttl       = 0
-  target    = "213.186.33.5"
-}
-
-resource "ovh_domain_zone_record" "g4b_ovh_5274823155" {
-  zone      = data.ovh_domain_zone.g4b_ovh.name
-  subdomain = "status"
-  fieldtype = "TXT"
-  ttl       = 0
-  target    = "1|https://stats.uptimerobot.com/5wKo4t0XqO"
-}
