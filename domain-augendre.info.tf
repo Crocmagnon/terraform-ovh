@@ -187,7 +187,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823404" {
   subdomain = "code"
   fieldtype = "CNAME"
   ttl       = 60
-  target    = "vps-1"
+  target    = "vps-1.taila7a600.ts.net."
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5274823406" {
@@ -419,7 +419,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823443" {
   subdomain = "test"
   fieldtype = "CNAME"
   ttl       = 60
-  target    = "vps-1"
+  target    = "vps-1.taila7a600.ts.net."
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5274823444" {
@@ -475,7 +475,7 @@ resource "ovh_domain_zone_record" "augendre_info_portainer_vps" {
   subdomain = "portainer-vps-1"
   fieldtype = "CNAME"
   ttl       = 60
-  target    = "vps-1"
+  target    = "vps-1.taila7a600.ts.net."
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5293296439" {
@@ -560,10 +560,10 @@ resource "ovh_domain_zone_record" "augendre_info_5337967994" {
 
 resource "ovh_domain_zone_record" "augendre_info_5345300513" {
   zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "stirlingpdf"
+  subdomain = "pdf"
   fieldtype = "CNAME"
   ttl       = 60
-  target    = "vps-1"
+  target    = "vps-1.taila7a600.ts.net."
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5346028581" {
