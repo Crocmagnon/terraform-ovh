@@ -430,22 +430,6 @@ resource "ovh_domain_zone_record" "augendre_info_5274823444" {
   target    = "nginx"
 }
 
-resource "ovh_domain_zone_record" "augendre_info_5274823445" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "uptime"
-  fieldtype = "A"
-  ttl       = 0
-  target    = "213.186.33.5"
-}
-
-resource "ovh_domain_zone_record" "augendre_info_5274823446" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "uptime"
-  fieldtype = "TXT"
-  ttl       = 0
-  target    = "1|https://stats.uptimerobot.com/5wKo4t0XqO"
-}
-
 resource "ovh_domain_zone_record" "augendre_info_5274823447" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "voyages"
@@ -484,14 +468,6 @@ resource "ovh_domain_zone_record" "augendre_info_5293296439" {
   fieldtype = "A"
   ttl       = 0
   target    = "82.66.199.43"
-}
-
-resource "ovh_domain_zone_record" "augendre_info_5295051062" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "mariage"
-  fieldtype = "CNAME"
-  ttl       = 60
-  target    = "vps-1"
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5295054193" {
@@ -616,3 +592,10 @@ resource "ovh_domain_zone_record" "augendre_info_vps_1" {
   target    = each.key
 }
 
+resource "ovh_domain_zone_record" "augendre_info_mariage" {
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "mariage"
+  fieldtype = "CNAME"
+  ttl       = 60
+  target    = "vps-1"
+}
