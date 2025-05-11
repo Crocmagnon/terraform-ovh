@@ -108,3 +108,27 @@ resource "ovh_hosting_privatedatabase_user_grant" "paperless_grant" {
   database_name = ovh_hosting_privatedatabase_database.paperless.database_name
   grant         = "admin"
 }
+
+variable "psql_wallabag_password" {
+  description = "wallabag password"
+  type        = string
+  sensitive   = true
+}
+
+resource "ovh_hosting_privatedatabase_database" "wallabag" {
+  service_name  = data.ovh_hosting_privatedatabase.psql.service_name
+  database_name = "wallabag"
+}
+
+resource "ovh_hosting_privatedatabase_user" "wallabag" {
+  service_name = data.ovh_hosting_privatedatabase.psql.service_name
+  user_name    = "wallabag"
+  password     = var.psql_wallabag_password
+}
+
+resource "ovh_hosting_privatedatabase_user_grant" "wallabag_grant" {
+  service_name  = data.ovh_hosting_privatedatabase.psql.service_name
+  user_name     = ovh_hosting_privatedatabase_user.wallabag.user_name
+  database_name = ovh_hosting_privatedatabase_database.wallabag.database_name
+  grant         = "admin"
+}
