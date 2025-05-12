@@ -576,12 +576,11 @@ resource "ovh_domain_zone_record" "augendre_info_common_vps_1" {
 }
 
 resource "ovh_domain_zone_record" "augendre_info_vps_1" {
-  for_each  = { for k, v in data.ovh_vps.vps_1.ips : k => v if strcontains(k, ".") } # cheap ipv4 vs ipv6 filter
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "vps-1"
-  fieldtype = "A"
+  fieldtype = "CNAME"
   ttl       = 60
-  target    = each.key
+  target    = "${data.ovh_vps.vps_1.service_name}."
 }
 
 resource "ovh_domain_zone_record" "augendre_info_mariage" {
