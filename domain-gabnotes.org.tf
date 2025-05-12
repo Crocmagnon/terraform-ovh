@@ -43,6 +43,15 @@ resource "ovh_domain_zone_record" "gabnotes_org_apex" {
   target    = each.key
 }
 
+resource "ovh_domain_zone_record" "gabnotes_org_apex_v6" {
+  for_each  = { for k, v in data.ovh_vps.vps_1.ips : k => v if strcontains(k, ":") } # cheap ipv4 vs ipv6 filter
+  zone      = data.ovh_domain_zone.gabnotes_org.name
+  subdomain = ""
+  fieldtype = "AAAA"
+  ttl       = 60
+  target    = each.key
+}
+
 resource "ovh_domain_zone_record" "gabnotes_org_5295328888" {
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = ""
