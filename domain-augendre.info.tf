@@ -3,7 +3,8 @@ data "ovh_domain_zone" "augendre_info" {
 }
 
 locals {
-  home_ip = "82.65.167.55"
+  home_ip      = "82.65.167.55"
+  home_ip_cidr = "${local.home_ip}/32"
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5274823378" {

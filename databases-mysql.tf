@@ -4,7 +4,7 @@ data "ovh_hosting_privatedatabase" "mysql" {
 
 resource "ovh_hosting_privatedatabase_whitelist" "mysql_home" {
   service_name = data.ovh_hosting_privatedatabase.mysql.service_name
-  ip           = local.allowed_source
+  ip           = local.home_ip_cidr
   name         = "home"
   service      = true
   sftp         = false

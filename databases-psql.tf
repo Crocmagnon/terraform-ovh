@@ -4,7 +4,7 @@ data "ovh_hosting_privatedatabase" "psql" {
 
 resource "ovh_hosting_privatedatabase_whitelist" "psql_home" {
   service_name = data.ovh_hosting_privatedatabase.psql.service_name
-  ip           = local.allowed_source
+  ip           = local.home_ip_cidr
   name         = "home"
   service      = true
   sftp         = false
