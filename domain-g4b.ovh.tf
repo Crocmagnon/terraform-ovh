@@ -43,6 +43,15 @@ resource "ovh_domain_zone_record" "g4b_ovh_5274823140" {
   target    = each.key
 }
 
+resource "ovh_domain_zone_record" "g4b_ovh_apex_v6" {
+  for_each  = { for k, v in data.ovh_vps.vps_1.ips : k => v if strcontains(k, ":") } # cheap ipv4 vs ipv6 filter
+  zone      = data.ovh_domain_zone.g4b_ovh.name
+  subdomain = ""
+  fieldtype = "AAAA"
+  ttl       = 60
+  target    = each.key
+}
+
 resource "ovh_domain_zone_record" "g4b_ovh_5274823141" {
   zone      = data.ovh_domain_zone.g4b_ovh.name
   subdomain = ""
