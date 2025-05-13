@@ -19,94 +19,48 @@ resource "ovh_hosting_privatedatabase_whitelist" "mysql_vps_1" {
   sftp         = false
 }
 
-/*
-resource "ovh_hosting_privatedatabase_whitelist" "mysql_vpn_eu_1" {
-  service_name = data.ovh_hosting_privatedatabase.mysql.service_name
-  ip           = "109.190.254.0/26"
-  name         = "corp EU proxies"
-  service      = true
-  sftp         = false
-}
-
-resource "ovh_hosting_privatedatabase_whitelist" "mysql_vpn_eu_2" {
-  service_name = data.ovh_hosting_privatedatabase.mysql.service_name
-  ip           = "109.190.255.0/25"
-  name         = "corp EU proxies"
-  service      = true
-  sftp         = false
-}
-*/
-
-variable "mysql_ghost_gabnotes_password" {
+variable "mysql_gabnotes_org_password" {
   description = "ghost gabnotes.org password"
   type        = string
   sensitive   = true
 }
 
-resource "ovh_hosting_privatedatabase_database" "gabnotes_org" {
-  service_name  = data.ovh_hosting_privatedatabase.mysql.service_name
-  database_name = "gabnotes_org"
-}
+module "db_gabnotes_org" {
+  source = "./modules/db"
 
-resource "ovh_hosting_privatedatabase_user" "gabnotes_org" {
+  db_name      = "gabnotes_org"
+  db_password  = var.mysql_gabnotes_org_password
   service_name = data.ovh_hosting_privatedatabase.mysql.service_name
-  user_name    = "gabnotes_org"
-  password     = var.mysql_ghost_gabnotes_password
 }
 
-resource "ovh_hosting_privatedatabase_user_grant" "gabnotes_org_grant" {
-  service_name  = data.ovh_hosting_privatedatabase.mysql.service_name
-  user_name     = ovh_hosting_privatedatabase_user.gabnotes_org.user_name
-  database_name = ovh_hosting_privatedatabase_database.gabnotes_org.database_name
-  grant         = "admin"
-}
-
-variable "mysql_ghost_voyages_coccomagnard_password" {
+variable "mysql_voyages_coccomagnard_fr_password" {
   description = "ghost voyages.coccomagnard.fr password"
   type        = string
   sensitive   = true
 }
 
-resource "ovh_hosting_privatedatabase_database" "voyages_coccomagnard_fr" {
-  service_name  = data.ovh_hosting_privatedatabase.mysql.service_name
-  database_name = "voyages_coccomagnard_fr"
-}
+module "db_voyages_coccomagnard_fr" {
+  source = "./modules/db"
 
-resource "ovh_hosting_privatedatabase_user" "voyages_coccomagnard_fr" {
+  db_name      = "voyages_coccomagnard_fr"
+  db_username  = "voyages_coccomag"
+  db_password  = var.mysql_voyages_coccomagnard_fr_password
   service_name = data.ovh_hosting_privatedatabase.mysql.service_name
-  user_name    = "voyages_coccomag"
-  password     = var.mysql_ghost_voyages_coccomagnard_password
 }
 
-resource "ovh_hosting_privatedatabase_user_grant" "voyages_coccomagnard_fr_grant" {
-  service_name  = data.ovh_hosting_privatedatabase.mysql.service_name
-  user_name     = ovh_hosting_privatedatabase_user.voyages_coccomagnard_fr.user_name
-  database_name = ovh_hosting_privatedatabase_database.voyages_coccomagnard_fr.database_name
-  grant         = "admin"
-}
-
-variable "mysql_ghost_voyages_lois_password" {
+variable "mysql_voyages_lois_augendre_info_password" {
   description = "ghost voyages.lois.augendre.info password"
   type        = string
   sensitive   = true
 }
 
-resource "ovh_hosting_privatedatabase_database" "voyages_lois_augendre_info" {
-  service_name  = data.ovh_hosting_privatedatabase.mysql.service_name
-  database_name = "voyages_lois_augendre_info"
-}
+module "db_voyages_lois_augendre_info" {
+  source = "./modules/db"
 
-resource "ovh_hosting_privatedatabase_user" "voyages_lois_augendre_info" {
+  db_name      = "voyages_lois_augendre_info"
+  db_username  = "voyages_lois"
+  db_password  = var.mysql_voyages_lois_augendre_info_password
   service_name = data.ovh_hosting_privatedatabase.mysql.service_name
-  user_name    = "voyages_lois"
-  password     = var.mysql_ghost_voyages_lois_password
-}
-
-resource "ovh_hosting_privatedatabase_user_grant" "voyages_lois_augendre_info_grant" {
-  service_name  = data.ovh_hosting_privatedatabase.mysql.service_name
-  user_name     = ovh_hosting_privatedatabase_user.voyages_lois_augendre_info.user_name
-  database_name = ovh_hosting_privatedatabase_database.voyages_lois_augendre_info.database_name
-  grant         = "admin"
 }
 
 variable "mysql_backup_password" {
@@ -124,21 +78,21 @@ resource "ovh_hosting_privatedatabase_user" "mysql_backup" {
 resource "ovh_hosting_privatedatabase_user_grant" "backup_grant_gabnotes" {
   service_name  = data.ovh_hosting_privatedatabase.mysql.service_name
   user_name     = ovh_hosting_privatedatabase_user.mysql_backup.user_name
-  database_name = ovh_hosting_privatedatabase_database.gabnotes_org.database_name
+  database_name = module.db_gabnotes_org.db_name
   grant         = "ro"
 }
 
 resource "ovh_hosting_privatedatabase_user_grant" "backup_grant_voyages_coccomagnard" {
   service_name  = data.ovh_hosting_privatedatabase.mysql.service_name
   user_name     = ovh_hosting_privatedatabase_user.mysql_backup.user_name
-  database_name = ovh_hosting_privatedatabase_database.voyages_coccomagnard_fr.database_name
+  database_name = module.db_voyages_coccomagnard_fr.db_name
   grant         = "ro"
 }
 
 resource "ovh_hosting_privatedatabase_user_grant" "backup_grant_voyages_lois" {
   service_name  = data.ovh_hosting_privatedatabase.mysql.service_name
   user_name     = ovh_hosting_privatedatabase_user.mysql_backup.user_name
-  database_name = ovh_hosting_privatedatabase_database.voyages_lois_augendre_info.database_name
+  database_name = module.db_voyages_lois_augendre_info.db_name
   grant         = "ro"
 }
 
