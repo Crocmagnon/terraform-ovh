@@ -1,0 +1,31 @@
+resource "ovh_domain_zone_record" "augendre_info_5274823404" {
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "code"
+  fieldtype = "CNAME"
+  ttl       = 60
+  target    = local.domain_target_vps_tailscale
+}
+
+resource "ovh_domain_zone_record" "augendre_info_5274823443" {
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "test"
+  fieldtype = "CNAME"
+  ttl       = 60
+  target    = local.domain_target_vps_tailscale
+}
+
+resource "ovh_domain_zone_record" "augendre_info_portainer_vps" {
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "portainer-vps-1"
+  fieldtype = "CNAME"
+  ttl       = 60
+  target    = local.domain_target_vps_tailscale
+}
+
+resource "ovh_domain_zone_record" "augendre_info_5345300513" {
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "pdf"
+  fieldtype = "CNAME"
+  ttl       = 60
+  target    = local.domain_target_vps_tailscale
+}
