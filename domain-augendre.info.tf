@@ -2,11 +2,6 @@ data "ovh_domain_zone" "augendre_info" {
   name = "augendre.info"
 }
 
-locals {
-  home_ip      = "82.65.167.55"
-  home_ip_cidr = "${local.home_ip}/32"
-}
-
 resource "ovh_domain_zone_record" "augendre_info_5274823378" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = ""
@@ -44,7 +39,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823382" {
   subdomain = ""
   fieldtype = "A"
   ttl       = 0
-  target    = local.home_ip
+  target    = local.ip_home
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5274823383" {
@@ -332,7 +327,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823430" {
   subdomain = "nginx"
   fieldtype = "A"
   ttl       = 0
-  target    = local.home_ip
+  target    = local.ip_home
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5274823432" {
@@ -564,11 +559,11 @@ resource "ovh_domain_zone_record" "augendre_info_common_nginx" {
   subdomain = "common"
   fieldtype = "A"
   ttl       = 60
-  target    = local.home_ip
+  target    = local.ip_home
 }
 
 resource "ovh_domain_zone_record" "augendre_info_common_vps_1" {
-  for_each  = { for k, v in data.ovh_vps.vps_1.ips : k => v if strcontains(k, ".") } # cheap ipv4 vs ipv6 filter
+  for_each  = local.ip_vps_1_v4
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "common"
   fieldtype = "A"

@@ -35,7 +35,7 @@ resource "ovh_domain_zone_record" "gabnotes_org_5295328886" {
 }
 
 resource "ovh_domain_zone_record" "gabnotes_org_apex" {
-  for_each  = { for k, v in data.ovh_vps.vps_1.ips : k => v if strcontains(k, ".") } # cheap ipv4 vs ipv6 filter
+  for_each  = local.ip_vps_1_v4
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = ""
   fieldtype = "A"
@@ -44,7 +44,7 @@ resource "ovh_domain_zone_record" "gabnotes_org_apex" {
 }
 
 resource "ovh_domain_zone_record" "gabnotes_org_apex_v6" {
-  for_each  = { for k, v in data.ovh_vps.vps_1.ips : k => v if strcontains(k, ":") } # cheap ipv4 vs ipv6 filter
+  for_each  = local.ip_vps_1_v6
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = ""
   fieldtype = "AAAA"

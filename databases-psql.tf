@@ -4,14 +4,14 @@ data "ovh_hosting_privatedatabase" "psql" {
 
 resource "ovh_hosting_privatedatabase_whitelist" "psql_home" {
   service_name = data.ovh_hosting_privatedatabase.psql.service_name
-  ip           = local.home_ip_cidr
+  ip           = local.ip_cidr_home
   name         = "home"
   service      = true
   sftp         = false
 }
 
 resource "ovh_hosting_privatedatabase_whitelist" "psql_vps_1" {
-  for_each     = { for k, v in data.ovh_vps.vps_1.ips : k => v if strcontains(k, ".") } # cheap ipv4 vs ipv6 filter
+  for_each     = local.ip_vps_1_v4
   service_name = data.ovh_hosting_privatedatabase.psql.service_name
   ip           = each.key
   name         = "vps-1"
