@@ -54,10 +54,18 @@ resource "ovh_domain_zone_record" "augendre_info_5325568092" {
   target    = local.domain_target_home_tailscale
 }
 
-resource "ovh_domain_zone_record" "augendre_info_5274823418" {
+resource "ovh_domain_zone_record" "augendre_info_hass_v4" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "hass"
-  fieldtype = "CNAME"
+  fieldtype = "A"
   ttl       = 60
-  target    = local.domain_target_home_tailscale
+  target    = "192.168.0.9"
+}
+
+resource "ovh_domain_zone_record" "augendre_info_hass_v6" {
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "hass"
+  fieldtype = "AAAA"
+  ttl       = 60
+  target    = "2a01:e0a:325:a1c0:a510:a88a:2977:5433"
 }
