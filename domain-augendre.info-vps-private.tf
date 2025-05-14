@@ -29,3 +29,19 @@ resource "ovh_domain_zone_record" "augendre_info_5345300513" {
   ttl       = 60
   target    = local.domain_target_vps_tailscale
 }
+
+resource "ovh_domain_zone_record" "augendre_info_5337967994" {
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "paperless"
+  fieldtype = "CNAME"
+  ttl       = 60
+  target    = local.domain_target_vps_tailscale
+}
+
+resource "ovh_domain_zone_record" "augendre_info_5274823442" {
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "tcl"
+  fieldtype = "CNAME"
+  ttl       = 60
+  target    = local.domain_target_vps_tailscale
+}
