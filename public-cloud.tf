@@ -23,12 +23,15 @@ resource "ovh_cloud_project_user_s3_credential" "terraform" {
   user_id      = ovh_cloud_project_user.terraform.id
 }
 
-resource "ovh_cloud_project_storage" "storage" {
+resource "ovh_cloud_project_storage" "terraform_state" {
   service_name = ovh_cloud_project.catch_all.id
   region_name  = "GRA"
   name         = "terraform-state-gaugendre"
   versioning = {
     status = "enabled"
+  }
+  encryption = {
+    sse_algorithm = "AES256"
   }
 }
 
@@ -46,8 +49,8 @@ resource "ovh_cloud_project_user_s3_policy" "terraform_rw" {
           "s3:ListBucket",
         ]
         Resource = [
-          "arn:aws:s3:::${ovh_cloud_project_storage.storage.name}",
-          "arn:aws:s3:::${ovh_cloud_project_storage.storage.name}/*",
+          "arn:aws:s3:::${ovh_cloud_project_storage.terraform_state.name}",
+          "arn:aws:s3:::${ovh_cloud_project_storage.terraform_state.name}/*",
         ]
       },
     ]
@@ -73,6 +76,9 @@ resource "ovh_cloud_project_storage" "restic_backups" {
   service_name = ovh_cloud_project.catch_all.id
   region_name  = "GRA"
   name         = "restic-backups-gaugendre"
+  encryption = {
+    sse_algorithm = "AES256"
+  }
 }
 
 resource "ovh_cloud_project_user_s3_policy" "restic_backups_rw" {
@@ -117,6 +123,9 @@ resource "ovh_cloud_project_storage" "pcloud_sync" {
   service_name = ovh_cloud_project.catch_all.id
   region_name  = "GRA"
   name         = "pcloud-sync-gaugendre"
+  encryption = {
+    sse_algorithm = "AES256"
+  }
 }
 
 resource "ovh_cloud_project_user_s3_policy" "pcloud_sync_rw" {
@@ -162,6 +171,9 @@ resource "ovh_cloud_project_storage" "restic_vps_backups" {
   service_name = ovh_cloud_project.catch_all.id
   region_name  = "SBG"
   name         = "restic-vps-backups-gaugendre"
+  encryption = {
+    sse_algorithm = "AES256"
+  }
 }
 
 resource "ovh_cloud_project_user_s3_policy" "restic_vps_backups_rw" {
