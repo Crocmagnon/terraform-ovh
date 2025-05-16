@@ -39,7 +39,7 @@ resource "ovh_domain_zone_record" "gabnotes_org_apex" {
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = ""
   fieldtype = "A"
-  ttl       = 60
+  ttl       = local.domain_ttl
   target    = each.key
 }
 
@@ -48,7 +48,7 @@ resource "ovh_domain_zone_record" "gabnotes_org_apex_v6" {
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = ""
   fieldtype = "AAAA"
-  ttl       = 60
+  ttl       = local.domain_ttl
   target    = each.key
 }
 
@@ -120,7 +120,7 @@ resource "ovh_domain_zone_record" "gabnotes_org_5295328896" {
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = "gc"
   fieldtype = "CNAME"
-  ttl       = 60
+  ttl       = local.domain_ttl
   target    = "gc.augendre.info."
 }
 
@@ -184,6 +184,6 @@ resource "ovh_domain_zone_record" "gabnotes_org_5295328905" {
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = "www"
   fieldtype = "CNAME"
-  ttl       = 60
+  ttl       = local.domain_ttl
   target    = "vps-1.augendre.info."
 }

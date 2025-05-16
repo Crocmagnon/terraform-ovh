@@ -39,7 +39,7 @@ resource "ovh_domain_zone_record" "augendre_info_apex_v4" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = ""
   fieldtype = "A"
-  ttl       = 60
+  ttl       = local.domain_ttl
   target    = each.key
 }
 
@@ -48,7 +48,7 @@ resource "ovh_domain_zone_record" "augendre_info_apex_v6" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = ""
   fieldtype = "AAAA"
-  ttl       = 60
+  ttl       = local.domain_ttl
   target    = each.key
 }
 
@@ -288,6 +288,6 @@ resource "ovh_domain_zone_record" "augendre_info_vps_1" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "vps-1"
   fieldtype = "CNAME"
-  ttl       = 60
+  ttl       = local.domain_ttl
   target    = "${data.ovh_vps.vps_1.service_name}."
 }
