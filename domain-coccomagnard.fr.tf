@@ -227,11 +227,3 @@ resource "ovh_domain_zone_record" "coccomagnard_fr_voyages" {
   ttl       = local.domain_ttl
   target    = "voyages.augendre.info."
 }
-
-resource "ovh_domain_zone_record" "coccomagnard_fr_www" {
-  zone      = data.ovh_domain_zone.coccomagnard_fr.name
-  subdomain = "www"
-  fieldtype = "CNAME"
-  ttl       = local.domain_ttl
-  target    = "coccomagnard.fr."
-}
