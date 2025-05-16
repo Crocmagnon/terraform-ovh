@@ -39,7 +39,7 @@ resource "ovh_domain_zone_record" "coccomagnard_fr_apex_v4" {
   zone      = data.ovh_domain_zone.coccomagnard_fr.name
   subdomain = ""
   fieldtype = "A"
-  ttl       = 60
+  ttl       = local.domain_ttl
   target    = each.key
 }
 
@@ -48,7 +48,7 @@ resource "ovh_domain_zone_record" "coccomagnard_fr_apex_v6" {
   zone      = data.ovh_domain_zone.coccomagnard_fr.name
   subdomain = ""
   fieldtype = "AAAA"
-  ttl       = 60
+  ttl       = local.domain_ttl
   target    = each.key
 }
 
@@ -96,7 +96,7 @@ resource "ovh_domain_zone_record" "coccomagnard_fr_gc_wildcard" {
   zone      = data.ovh_domain_zone.coccomagnard_fr.name
   subdomain = "*.gc"
   fieldtype = "CNAME"
-  ttl       = 60
+  ttl       = local.domain_ttl
   target    = "gc.augendre.info."
 }
 
@@ -104,7 +104,7 @@ resource "ovh_domain_zone_record" "coccomagnard_fr_gc" {
   zone      = data.ovh_domain_zone.coccomagnard_fr.name
   subdomain = "gc"
   fieldtype = "CNAME"
-  ttl       = 60
+  ttl       = local.domain_ttl
   target    = "gc.augendre.info."
 }
 
@@ -232,40 +232,14 @@ resource "ovh_domain_zone_record" "coccomagnard_fr_voyages" {
   zone      = data.ovh_domain_zone.coccomagnard_fr.name
   subdomain = "voyages"
   fieldtype = "CNAME"
-  ttl       = 60
+  ttl       = local.domain_ttl
   target    = "voyages.augendre.info."
 }
 
-resource "ovh_domain_zone_record" "coccomagnard_fr_5274823184" {
+resource "ovh_domain_zone_record" "coccomagnard_fr_www" {
   zone      = data.ovh_domain_zone.coccomagnard_fr.name
   subdomain = "www"
-  fieldtype = "MX"
+  fieldtype = "CNAME"
   ttl       = local.domain_ttl
-  target    = "10 aspmx1.migadu.com."
-}
-
-resource "ovh_domain_zone_record" "coccomagnard_fr_5274823185" {
-  zone      = data.ovh_domain_zone.coccomagnard_fr.name
-  subdomain = "www"
-  fieldtype = "MX"
-  ttl       = local.domain_ttl
-  target    = "20 aspmx2.migadu.com."
-}
-
-resource "ovh_domain_zone_record" "coccomagnard_fr_www_v4" {
-  for_each  = local.ip_vps_1_v4
-  zone      = data.ovh_domain_zone.coccomagnard_fr.name
-  subdomain = "www"
-  fieldtype = "A"
-  ttl       = 60
-  target    = each.key
-}
-
-resource "ovh_domain_zone_record" "coccomagnard_fr_www_v6" {
-  for_each  = local.ip_vps_1_v6
-  zone      = data.ovh_domain_zone.coccomagnard_fr.name
-  subdomain = "www"
-  fieldtype = "AAAA"
-  ttl       = 60
-  target    = each.key
+  target    = "coccomagnard.fr."
 }
