@@ -52,14 +52,6 @@ resource "ovh_domain_zone_record" "coccomagnard_fr_apex_v6" {
   target    = each.key
 }
 
-resource "ovh_domain_zone_record" "coccomagnard_fr_5274823161" {
-  zone      = data.ovh_domain_zone.coccomagnard_fr.name
-  subdomain = ""
-  fieldtype = "TXT"
-  ttl       = local.domain_ttl
-  target    = "1|www.coccomagnard.fr"
-}
-
 resource "ovh_domain_zone_record" "coccomagnard_fr_5274823162" {
   zone      = data.ovh_domain_zone.coccomagnard_fr.name
   subdomain = ""
