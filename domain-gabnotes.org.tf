@@ -187,3 +187,11 @@ resource "ovh_domain_zone_record" "gabnotes_org_5295328905" {
   ttl       = local.domain_ttl
   target    = "vps-1.augendre.info."
 }
+
+resource "ovh_domain_zone_record" "gabnotes_org_pika" {
+  zone      = data.ovh_domain_zone.gabnotes_org.name
+  subdomain = "pika"
+  fieldtype = "CNAME"
+  ttl       = 60
+  target    = "pika.page."
+}
