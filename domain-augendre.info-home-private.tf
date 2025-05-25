@@ -69,3 +69,11 @@ resource "ovh_domain_zone_record" "augendre_info_hass_v6" {
   ttl       = local.domain_ttl
   target    = "2a01:e0a:325:a1c0:a510:a88a:2977:5433"
 }
+
+resource "ovh_domain_zone_record" "augendre_info_vps_control" {
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "vps-control"
+  fieldtype = "CNAME"
+  ttl       = local.domain_ttl
+  target    = local.domain_target_home_tailscale
+}
