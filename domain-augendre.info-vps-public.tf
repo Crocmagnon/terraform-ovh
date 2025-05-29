@@ -1,8 +1,8 @@
-resource "ovh_domain_zone_record" "augendre_info_5274823415" {
+resource "ovh_domain_zone_record" "augendre_info_goatcounter" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "gc"
   fieldtype = "CNAME"
-  ttl       = local.domain_ttl
+  ttl       = 60
   target    = local.domain_target_vps_public
 }
 

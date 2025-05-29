@@ -96,8 +96,8 @@ resource "ovh_domain_zone_record" "coccomagnard_fr_gc" {
   zone      = data.ovh_domain_zone.coccomagnard_fr.name
   subdomain = "gc"
   fieldtype = "CNAME"
-  ttl       = local.domain_ttl
-  target    = "gc.augendre.info."
+  ttl       = 60                  # TODO increase TTL
+  target    = "gc.augendre.info." # TODO move to voyages-coccomagnard.goatcounter.com
 }
 
 resource "ovh_domain_zone_record" "coccomagnard_fr_5274823167" {
