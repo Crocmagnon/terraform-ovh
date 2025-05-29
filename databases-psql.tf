@@ -74,17 +74,3 @@ module "db_wallabag" {
   db_password  = var.psql_wallabag_password
   service_name = data.ovh_hosting_privatedatabase.psql.service_name
 }
-
-variable "psql_goatcounter_password" {
-  description = "goatcounter password"
-  type        = string
-  sensitive   = true
-}
-
-module "db_goatcounter" {
-  source = "./modules/db"
-
-  db_name      = "goatcounter"
-  db_password  = var.psql_goatcounter_password
-  service_name = data.ovh_hosting_privatedatabase.psql.service_name
-}
