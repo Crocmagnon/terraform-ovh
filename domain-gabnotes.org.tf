@@ -116,12 +116,12 @@ resource "ovh_domain_zone_record" "gabnotes_org_5295328895" {
   target    = "eu.mailgun.org."
 }
 
-resource "ovh_domain_zone_record" "gabnotes_org_5295328896" {
+resource "ovh_domain_zone_record" "gabnotes_org_goatcounter" {
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = "gc"
   fieldtype = "CNAME"
   ttl       = local.domain_ttl
-  target    = "gc.augendre.info."
+  target    = "gabnotes.goatcounter.com."
 }
 
 resource "ovh_domain_zone_record" "gabnotes_org_5295328898" {
