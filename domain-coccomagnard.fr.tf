@@ -208,6 +208,6 @@ resource "ovh_domain_zone_record" "coccomagnard_fr_voyages" {
   zone      = data.ovh_domain_zone.coccomagnard_fr.name
   subdomain = "voyages"
   fieldtype = "CNAME"
-  ttl       = local.domain_ttl
+  ttl       = 60
   target    = "voyages.augendre.info."
 }
