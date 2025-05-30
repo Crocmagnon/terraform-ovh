@@ -106,7 +106,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823447" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "voyages"
   fieldtype = "CNAME"
-  ttl       = local.domain_ttl
+  ttl       = 60
   target    = local.domain_target_vps_public
 }
 
