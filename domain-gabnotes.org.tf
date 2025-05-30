@@ -39,7 +39,7 @@ resource "ovh_domain_zone_record" "gabnotes_org_apex" {
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = ""
   fieldtype = "A"
-  ttl       = local.domain_ttl
+  ttl       = 60
   target    = each.key
 }
 
@@ -48,7 +48,7 @@ resource "ovh_domain_zone_record" "gabnotes_org_apex_v6" {
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = ""
   fieldtype = "AAAA"
-  ttl       = local.domain_ttl
+  ttl       = 60
   target    = each.key
 }
 
