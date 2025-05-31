@@ -209,5 +209,5 @@ resource "ovh_domain_zone_record" "coccomagnard_fr_voyages" {
   subdomain = "voyages"
   fieldtype = "CNAME"
   ttl       = 60
-  target    = "voyages.augendre.info."
+  target    = "pika.page."
 }
