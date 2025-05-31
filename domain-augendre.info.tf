@@ -291,3 +291,11 @@ resource "ovh_domain_zone_record" "augendre_info_vps_1" {
   ttl       = local.domain_ttl
   target    = "${data.ovh_vps.vps_1.service_name}."
 }
+
+resource "ovh_domain_zone_record" "augendre_info_google_verif" {
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = ""
+  fieldtype = "TXT"
+  ttl       = local.domain_ttl
+  target    = "google-site-verification=x2oRItA0r6paeQM1fW9yYu63Dm0AzoMSUCP5CtS-WhY"
+}
