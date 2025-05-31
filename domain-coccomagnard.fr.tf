@@ -211,3 +211,11 @@ resource "ovh_domain_zone_record" "coccomagnard_fr_voyages" {
   ttl       = 60
   target    = "pika.page."
 }
+
+resource "ovh_domain_zone_record" "coccomagnard_fr_google_verif" {
+  zone      = data.ovh_domain_zone.coccomagnard_fr.name
+  subdomain = ""
+  fieldtype = "TXT"
+  ttl       = local.domain_ttl
+  target    = "google-site-verification=jVl7ahM10RxT1oWKr4x2ne1zZMy8O35OdT-XeEqIdnM"
+}
