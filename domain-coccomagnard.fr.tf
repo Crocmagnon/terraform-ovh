@@ -49,7 +49,7 @@ module "coccomagnard_fr_migadu" {
 module "coccomagnard_fr_mailgun" {
   source        = "./modules/mailgun"
   zone          = data.ovh_domain_zone.coccomagnard_fr.name
-  ttl           = local.domain_ttl
+  ttl           = 60
   endpoint      = "eu"
   dmarc         = "v=DMARC1; p=quarantine; pct=100; fo=1; ri=3600; rua=mailto:dbbd0f84@dmarc.mailgun.org,mailto:c031cfb4@inbox.ondmarc.com; ruf=mailto:dbbd0f84@dmarc.mailgun.org,mailto:c031cfb4@inbox.ondmarc.com;"
   dkim_selector = "email"
