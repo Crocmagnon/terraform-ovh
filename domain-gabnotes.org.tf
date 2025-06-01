@@ -35,21 +35,11 @@ resource "ovh_domain_zone_record" "gabnotes_org_5295328886" {
 }
 
 resource "ovh_domain_zone_record" "gabnotes_org_apex" {
-  for_each  = local.ip_vps_1_v4
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = ""
   fieldtype = "A"
   ttl       = 60
-  target    = each.key
-}
-
-resource "ovh_domain_zone_record" "gabnotes_org_apex_v6" {
-  for_each  = local.ip_vps_1_v6
-  zone      = data.ovh_domain_zone.gabnotes_org.name
-  subdomain = ""
-  fieldtype = "AAAA"
-  ttl       = 60
-  target    = each.key
+  target    = "216.24.57.1" # pika.page
 }
 
 resource "ovh_domain_zone_record" "gabnotes_org_5295328888" {
@@ -57,7 +47,7 @@ resource "ovh_domain_zone_record" "gabnotes_org_5295328888" {
   subdomain = ""
   fieldtype = "TXT"
   ttl       = local.domain_ttl
-  target    = "\"google-site-verification=_srmxXEmPxzvRHJCsw2pmoX7q2l8WMFIFZc8qgOuVIo\""
+  target    = "google-site-verification=_srmxXEmPxzvRHJCsw2pmoX7q2l8WMFIFZc8qgOuVIo"
 }
 
 resource "ovh_domain_zone_record" "gabnotes_org_5295328889" {
@@ -65,7 +55,7 @@ resource "ovh_domain_zone_record" "gabnotes_org_5295328889" {
   subdomain = ""
   fieldtype = "TXT"
   ttl       = local.domain_ttl
-  target    = "\"hosted-email-verify=bdmii6z6\""
+  target    = "hosted-email-verify=bdmii6z6"
 }
 
 resource "ovh_domain_zone_record" "gabnotes_org_5295328890" {
@@ -74,22 +64,6 @@ resource "ovh_domain_zone_record" "gabnotes_org_5295328890" {
   fieldtype = "SPF"
   ttl       = local.domain_ttl
   target    = "v=spf1 include:spf.migadu.com -all"
-}
-
-resource "ovh_domain_zone_record" "gabnotes_org_5295328891" {
-  zone      = data.ovh_domain_zone.gabnotes_org.name
-  subdomain = ""
-  fieldtype = "CAA"
-  ttl       = local.domain_ttl
-  target    = "0 issue \"letsencrypt.org\""
-}
-
-resource "ovh_domain_zone_record" "gabnotes_org_5295328892" {
-  zone      = data.ovh_domain_zone.gabnotes_org.name
-  subdomain = ""
-  fieldtype = "CAA"
-  ttl       = local.domain_ttl
-  target    = "0 issue \"zerossl.com\""
 }
 
 resource "ovh_domain_zone_record" "gabnotes_org_5295328893" {
@@ -172,12 +146,12 @@ resource "ovh_domain_zone_record" "gabnotes_org_5295328904" {
   target    = "v=spf1 include:eu.mailgun.org -all"
 }
 
-resource "ovh_domain_zone_record" "gabnotes_org_5295328905" {
+resource "ovh_domain_zone_record" "gabnotes_org_www" {
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = "www"
   fieldtype = "CNAME"
-  ttl       = local.domain_ttl
-  target    = "vps-1.augendre.info."
+  ttl       = 60
+  target    = "pika.page."
 }
 
 resource "ovh_domain_zone_record" "gabnotes_org_pika" {
