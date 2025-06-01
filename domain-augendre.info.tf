@@ -115,3 +115,13 @@ resource "ovh_domain_zone_record" "augendre_info_vps_1" {
   ttl       = local.domain_ttl
   target    = "${data.ovh_vps.vps_1.service_name}."
 }
+
+
+# ----------------------------------------------------------------------
+# Migadu
+# ----------------------------------------------------------------------
+module "augendre_info_migadu" {
+  source = "./modules/migadu"
+  zone   = data.ovh_domain_zone.augendre_info.name
+  ttl    = local.domain_ttl
+}

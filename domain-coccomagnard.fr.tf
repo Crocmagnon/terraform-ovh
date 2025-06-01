@@ -31,3 +31,14 @@ resource "ovh_domain_zone_record" "coccomagnard_fr_voyages" {
   ttl       = 60
   target    = "pika.page."
 }
+
+
+# ----------------------------------------------------------------------
+# Migadu
+# ----------------------------------------------------------------------
+module "coccomagnard_fr_migadu" {
+  source = "./modules/migadu"
+  zone   = data.ovh_domain_zone.coccomagnard_fr.name
+  ttl    = local.domain_ttl
+}
+

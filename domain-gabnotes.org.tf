@@ -44,3 +44,13 @@ resource "ovh_domain_zone_record" "gabnotes_org_pika" {
   ttl       = 60
   target    = "pika.page."
 }
+
+
+# ----------------------------------------------------------------------
+# Migadu
+# ----------------------------------------------------------------------
+module "gabnotes_org_migadu" {
+  source = "./modules/migadu"
+  zone   = data.ovh_domain_zone.gabnotes_org.name
+  ttl    = local.domain_ttl
+}

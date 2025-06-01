@@ -40,3 +40,13 @@ resource "ovh_domain_zone_record" "g4b_ovh_apex_v6" {
   ttl       = local.domain_ttl
   target    = each.key
 }
+
+
+# ----------------------------------------------------------------------
+# Migadu
+# ----------------------------------------------------------------------
+module "g4b_ovh_migadu" {
+  source = "./modules/migadu"
+  zone   = data.ovh_domain_zone.g4b_ovh.name
+  ttl    = local.domain_ttl
+}
