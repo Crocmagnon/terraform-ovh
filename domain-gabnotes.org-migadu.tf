@@ -1,55 +1,40 @@
-resource "ovh_domain_zone_record" "gabnotes_org_5295328885" {
-  zone      = data.ovh_domain_zone.gabnotes_org.name
-  subdomain = ""
-  fieldtype = "MX"
-  ttl       = local.domain_ttl
-  target    = "20 aspmx2.migadu.com."
+module "gabnotes_org_migadu" {
+  source = "./modules/migadu"
+  zone   = data.ovh_domain_zone.gabnotes_org.name
+  ttl    = local.domain_ttl
 }
 
-resource "ovh_domain_zone_record" "gabnotes_org_5295328886" {
-  zone      = data.ovh_domain_zone.gabnotes_org.name
-  subdomain = ""
-  fieldtype = "MX"
-  ttl       = local.domain_ttl
-  target    = "10 aspmx1.migadu.com."
+moved {
+  from = ovh_domain_zone_record.gabnotes_org_5295328886
+  to   = module.gabnotes_org_migadu.ovh_domain_zone_record.this_mx_10_apex
 }
 
-resource "ovh_domain_zone_record" "gabnotes_org_5295328890" {
-  zone      = data.ovh_domain_zone.gabnotes_org.name
-  subdomain = ""
-  fieldtype = "SPF"
-  ttl       = local.domain_ttl
-  target    = "v=spf1 include:spf.migadu.com -all"
+moved {
+  from = ovh_domain_zone_record.gabnotes_org_5295328885
+  to   = module.gabnotes_org_migadu.ovh_domain_zone_record.this_mx_20_apex
 }
 
-resource "ovh_domain_zone_record" "gabnotes_org_5295328893" {
-  zone      = data.ovh_domain_zone.gabnotes_org.name
-  subdomain = "_dmarc"
-  fieldtype = "DMARC"
-  ttl       = local.domain_ttl
-  target    = "v=DMARC1;p=reject;pct=100;rua=mailto:bzphlmdj@ag.eu.dmarcian.com;sp=reject;aspf=s;"
+moved {
+  from = ovh_domain_zone_record.gabnotes_org_5295328890
+  to   = module.gabnotes_org_migadu.ovh_domain_zone_record.this_spf
 }
 
-resource "ovh_domain_zone_record" "gabnotes_org_5295328898" {
-  zone      = data.ovh_domain_zone.gabnotes_org.name
-  subdomain = "key1._domainkey"
-  fieldtype = "CNAME"
-  ttl       = local.domain_ttl
-  target    = "key1.gabnotes.org._domainkey.migadu.com."
+moved {
+  from = ovh_domain_zone_record.gabnotes_org_5295328893
+  to   = module.gabnotes_org_migadu.ovh_domain_zone_record.this_dmarc
 }
 
-resource "ovh_domain_zone_record" "gabnotes_org_5295328899" {
-  zone      = data.ovh_domain_zone.gabnotes_org.name
-  subdomain = "key2._domainkey"
-  fieldtype = "CNAME"
-  ttl       = local.domain_ttl
-  target    = "key2.gabnotes.org._domainkey.migadu.com."
+moved {
+  from = ovh_domain_zone_record.gabnotes_org_5295328898
+  to   = module.gabnotes_org_migadu.ovh_domain_zone_record.this_domainkey_1
 }
 
-resource "ovh_domain_zone_record" "gabnotes_org_5295328900" {
-  zone      = data.ovh_domain_zone.gabnotes_org.name
-  subdomain = "key3._domainkey"
-  fieldtype = "CNAME"
-  ttl       = local.domain_ttl
-  target    = "key3.gabnotes.org._domainkey.migadu.com."
+moved {
+  from = ovh_domain_zone_record.gabnotes_org_5295328899
+  to   = module.gabnotes_org_migadu.ovh_domain_zone_record.this_domainkey_2
+}
+
+moved {
+  from = ovh_domain_zone_record.gabnotes_org_5295328900
+  to   = module.gabnotes_org_migadu.ovh_domain_zone_record.this_domainkey_3
 }
