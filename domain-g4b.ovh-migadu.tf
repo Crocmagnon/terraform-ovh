@@ -1,95 +1,66 @@
-resource "ovh_domain_zone_record" "g4b_ovh_5274823138" {
-  zone      = data.ovh_domain_zone.g4b_ovh.name
-  subdomain = ""
-  fieldtype = "MX"
-  ttl       = local.domain_ttl
-  target    = "10 aspmx1.migadu.com."
+module "g4b_ovh_migadu" {
+  source = "./modules/migadu"
+  zone   = data.ovh_domain_zone.g4b_ovh.name
+  ttl    = local.domain_ttl
 }
 
-resource "ovh_domain_zone_record" "g4b_ovh_5274823139" {
-  zone      = data.ovh_domain_zone.g4b_ovh.name
-  subdomain = ""
-  fieldtype = "MX"
-  ttl       = local.domain_ttl
-  target    = "20 aspmx2.migadu.com."
+moved {
+  from = ovh_domain_zone_record.g4b_ovh_5274823138
+  to   = module.g4b_ovh_migadu.ovh_domain_zone_record.this_mx_10_apex
 }
 
-resource "ovh_domain_zone_record" "g4b_ovh_5274823141" {
-  zone      = data.ovh_domain_zone.g4b_ovh.name
-  subdomain = ""
-  fieldtype = "SPF"
-  ttl       = local.domain_ttl
-  target    = "v=spf1 include:spf.migadu.com -all"
+moved {
+  from = ovh_domain_zone_record.g4b_ovh_5274823139
+  to   = module.g4b_ovh_migadu.ovh_domain_zone_record.this_mx_20_apex
 }
 
-resource "ovh_domain_zone_record" "g4b_ovh_5274823143" {
-  zone      = data.ovh_domain_zone.g4b_ovh.name
-  subdomain = "_autodiscover._tcp"
-  fieldtype = "SRV"
-  ttl       = local.domain_ttl
-  target    = "0 1 443 autodiscover.migadu.com."
+moved {
+  from = ovh_domain_zone_record.g4b_ovh_5274823141
+  to   = module.g4b_ovh_migadu.ovh_domain_zone_record.this_spf
 }
 
-resource "ovh_domain_zone_record" "g4b_ovh_5274823144" {
-  zone      = data.ovh_domain_zone.g4b_ovh.name
-  subdomain = "_dmarc"
-  fieldtype = "DMARC"
-  ttl       = local.domain_ttl
-  target    = "v=DMARC1; p=quarantine;"
+moved {
+  from = ovh_domain_zone_record.g4b_ovh_5274823143
+  to   = module.g4b_ovh_migadu.ovh_domain_zone_record.this_autodiscover
 }
 
-resource "ovh_domain_zone_record" "g4b_ovh_5274823146" {
-  zone      = data.ovh_domain_zone.g4b_ovh.name
-  subdomain = "_imaps._tcp"
-  fieldtype = "SRV"
-  ttl       = local.domain_ttl
-  target    = "0 1 993 imap.migadu.com."
+moved {
+  from = ovh_domain_zone_record.g4b_ovh_5274823144
+  to   = module.g4b_ovh_migadu.ovh_domain_zone_record.this_dmarc
 }
 
-resource "ovh_domain_zone_record" "g4b_ovh_5274823147" {
-  zone      = data.ovh_domain_zone.g4b_ovh.name
-  subdomain = "_pop3s._tcp"
-  fieldtype = "SRV"
-  ttl       = local.domain_ttl
-  target    = "0 1 995 pop.migadu.com."
+moved {
+  from = ovh_domain_zone_record.g4b_ovh_5274823146
+  to   = module.g4b_ovh_migadu.ovh_domain_zone_record.this_imaps
 }
 
-resource "ovh_domain_zone_record" "g4b_ovh_5274823148" {
-  zone      = data.ovh_domain_zone.g4b_ovh.name
-  subdomain = "_submissions._tcp"
-  fieldtype = "SRV"
-  ttl       = local.domain_ttl
-  target    = "0 1 465 smtp.migadu.com."
+moved {
+  from = ovh_domain_zone_record.g4b_ovh_5274823147
+  to   = module.g4b_ovh_migadu.ovh_domain_zone_record.this_pop3s
 }
 
-resource "ovh_domain_zone_record" "g4b_ovh_5274823149" {
-  zone      = data.ovh_domain_zone.g4b_ovh.name
-  subdomain = "autoconfig"
-  fieldtype = "CNAME"
-  ttl       = local.domain_ttl
-  target    = "autoconfig.migadu.com."
+moved {
+  from = ovh_domain_zone_record.g4b_ovh_5274823149
+  to   = module.g4b_ovh_migadu.ovh_domain_zone_record.this_autoconfig
 }
 
-resource "ovh_domain_zone_record" "g4b_ovh_5274823150" {
-  zone      = data.ovh_domain_zone.g4b_ovh.name
-  subdomain = "key1._domainkey"
-  fieldtype = "CNAME"
-  ttl       = local.domain_ttl
-  target    = "key1.g4b.ovh._domainkey.migadu.com."
+moved {
+  from = ovh_domain_zone_record.g4b_ovh_5274823148
+  to   = module.g4b_ovh_migadu.ovh_domain_zone_record.this_smtp
 }
 
-resource "ovh_domain_zone_record" "g4b_ovh_5274823151" {
-  zone      = data.ovh_domain_zone.g4b_ovh.name
-  subdomain = "key2._domainkey"
-  fieldtype = "CNAME"
-  ttl       = local.domain_ttl
-  target    = "key2.g4b.ovh._domainkey.migadu.com."
+moved {
+  from = ovh_domain_zone_record.g4b_ovh_5274823150
+  to   = module.g4b_ovh_migadu.ovh_domain_zone_record.this_domainkey_1
 }
 
-resource "ovh_domain_zone_record" "g4b_ovh_5274823152" {
-  zone      = data.ovh_domain_zone.g4b_ovh.name
-  subdomain = "key3._domainkey"
-  fieldtype = "CNAME"
-  ttl       = local.domain_ttl
-  target    = "key3.g4b.ovh._domainkey.migadu.com."
+moved {
+  from = ovh_domain_zone_record.g4b_ovh_5274823151
+  to   = module.g4b_ovh_migadu.ovh_domain_zone_record.this_domainkey_2
 }
+
+moved {
+  from = ovh_domain_zone_record.g4b_ovh_5274823152
+  to   = module.g4b_ovh_migadu.ovh_domain_zone_record.this_domainkey_3
+}
+
