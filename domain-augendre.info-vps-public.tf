@@ -22,14 +22,6 @@ resource "ovh_domain_zone_record" "augendre_info_5274823432" {
   target    = local.domain_target_vps_public
 }
 
-resource "ovh_domain_zone_record" "augendre_info_5274823399" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "blog"
-  fieldtype = "CNAME"
-  ttl       = local.domain_ttl
-  target    = local.domain_target_vps_public
-}
-
 resource "ovh_domain_zone_record" "augendre_info_5274823400" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "charasheet"
@@ -49,14 +41,6 @@ resource "ovh_domain_zone_record" "augendre_info_5274823406" {
 resource "ovh_domain_zone_record" "augendre_info_5274823412" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "fournitures"
-  fieldtype = "CNAME"
-  ttl       = local.domain_ttl
-  target    = local.domain_target_vps_public
-}
-
-resource "ovh_domain_zone_record" "augendre_info_5274823414" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "gabriel"
   fieldtype = "CNAME"
   ttl       = local.domain_ttl
   target    = local.domain_target_vps_public
