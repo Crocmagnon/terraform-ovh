@@ -34,24 +34,6 @@ resource "ovh_domain_zone_record" "coccomagnard_fr_5274823159" {
   target    = "20 aspmx2.migadu.com."
 }
 
-resource "ovh_domain_zone_record" "coccomagnard_fr_apex_v4" {
-  for_each  = local.ip_vps_1_v4
-  zone      = data.ovh_domain_zone.coccomagnard_fr.name
-  subdomain = ""
-  fieldtype = "A"
-  ttl       = local.domain_ttl
-  target    = each.key
-}
-
-resource "ovh_domain_zone_record" "coccomagnard_fr_apex_v6" {
-  for_each  = local.ip_vps_1_v6
-  zone      = data.ovh_domain_zone.coccomagnard_fr.name
-  subdomain = ""
-  fieldtype = "AAAA"
-  ttl       = local.domain_ttl
-  target    = each.key
-}
-
 resource "ovh_domain_zone_record" "coccomagnard_fr_5274823162" {
   zone      = data.ovh_domain_zone.coccomagnard_fr.name
   subdomain = ""
