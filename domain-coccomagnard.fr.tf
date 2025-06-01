@@ -44,7 +44,7 @@ module "coccomagnard_fr_migadu" {
 
 
 # ----------------------------------------------------------------------
-# Migadu
+# Mailgun
 # ----------------------------------------------------------------------
 module "coccomagnard_fr_mailgun" {
   source        = "./modules/mailgun"

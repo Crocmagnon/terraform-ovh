@@ -128,7 +128,7 @@ module "augendre_info_migadu" {
 
 
 # ----------------------------------------------------------------------
-# Migadu
+# Mailgun
 # ----------------------------------------------------------------------
 module "augendre_info_mailgun" {
   source        = "./modules/mailgun"
