@@ -125,3 +125,17 @@ module "augendre_info_migadu" {
   zone   = data.ovh_domain_zone.augendre_info.name
   ttl    = local.domain_ttl
 }
+
+
+# ----------------------------------------------------------------------
+# Migadu
+# ----------------------------------------------------------------------
+module "augendre_info_mailgun" {
+  source        = "./modules/mailgun"
+  zone          = data.ovh_domain_zone.augendre_info.name
+  ttl           = local.domain_ttl
+  endpoint      = "us"
+  dmarc         = "v=DMARC1; p=none; pct=100; fo=1; ri=3600; rua=mailto:dbbd0f84@dmarc.mailgun.org,mailto:c031cfb4@inbox.ondmarc.com; ruf=mailto:dbbd0f84@dmarc.mailgun.org,mailto:c031cfb4@inbox.ondmarc.com;"
+  dkim_selector = "k1"
+  dkim          = "k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCuQjT4Q30jOLnhkk3MLh8WNrVGPl2CD4/lK+1q5vvra6TIWgHUbIDPGVCeImnRA+qk5b/IuJnoFFigcAD9rPMTkd4uN1mBN22OuWcI5xQALnJMt0NDNzeukg7kIgbFjgFJCUjhYh4c4EH6xZI733qpUxgIv7KgPGRU5R3uOlXg8wIDAQAB"
+}
