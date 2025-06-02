@@ -37,13 +37,6 @@ resource "ovh_domain_zone_record" "gabnotes_org_www" {
   ttl       = 60
   target    = "pika.page."
 }
-resource "ovh_domain_zone_record" "gabnotes_org_pika" {
-  zone      = data.ovh_domain_zone.gabnotes_org.name
-  subdomain = "pika"
-  fieldtype = "CNAME"
-  ttl       = 60
-  target    = "pika.page."
-}
 
 
 # ----------------------------------------------------------------------
