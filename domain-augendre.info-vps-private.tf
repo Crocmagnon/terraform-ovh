@@ -45,11 +45,3 @@ resource "ovh_domain_zone_record" "augendre_info_5274823442" {
   ttl       = local.domain_short_ttl
   target    = local.domain_target_vps_tailscale
 }
-
-resource "ovh_domain_zone_record" "augendre_info_budget" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "budget"
-  fieldtype = "CNAME"
-  ttl       = local.domain_short_ttl
-  target    = local.domain_target_vps_tailscale
-}
