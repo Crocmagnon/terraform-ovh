@@ -9,14 +9,14 @@ resource "ovh_domain_zone_record" "gabnotes_org_5295328883" {
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = ""
   fieldtype = "NS"
-  ttl       = local.domain_ttl
+  ttl       = local.domain_long_ttl
   target    = "ns111.ovh.net."
 }
 resource "ovh_domain_zone_record" "gabnotes_org_5295328884" {
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = ""
   fieldtype = "NS"
-  ttl       = local.domain_ttl
+  ttl       = local.domain_long_ttl
   target    = "dns111.ovh.net."
 }
 
@@ -45,7 +45,7 @@ resource "ovh_domain_zone_record" "gabnotes_org_www" {
 module "gabnotes_org_migadu" {
   source = "./modules/migadu"
   zone   = data.ovh_domain_zone.gabnotes_org.name
-  ttl    = local.domain_ttl
+  ttl    = local.domain_long_ttl
 }
 
 
