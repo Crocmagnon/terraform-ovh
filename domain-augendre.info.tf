@@ -64,8 +64,8 @@ resource "ovh_domain_zone_record" "augendre_info_5274823409" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "doses"
   fieldtype = "CNAME"
-  ttl       = local.domain_long_ttl
-  target    = "crocmagnon.github.io."
+  ttl       = 60
+  target    = "master.doses.crocmagnon.codeberg.page."
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5274823430" {
