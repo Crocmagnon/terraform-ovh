@@ -104,8 +104,8 @@ resource "ovh_domain_zone_record" "augendre_info_go_cname" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "go"
   fieldtype = "CNAME"
-  ttl       = local.domain_long_ttl
-  target    = "crocmagnon.github.io."
+  ttl       = 60
+  target    = "master.go_augendre_info.crocmagnon.codeberg.page."
 }
 
 resource "ovh_domain_zone_record" "augendre_info_vps_1" {
