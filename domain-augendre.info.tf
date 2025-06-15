@@ -64,7 +64,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823409" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "doses"
   fieldtype = "CNAME"
-  ttl       = 60
+  ttl       = local.domain_long_ttl
   target    = "master.doses.crocmagnon.codeberg.page."
 }
 
@@ -104,8 +104,16 @@ resource "ovh_domain_zone_record" "augendre_info_go_cname" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "go"
   fieldtype = "CNAME"
-  ttl       = 60
-  target    = "crocmagnon.github.io."
+  ttl       = local.domain_long_ttl
+  target    = "main.go_augendre_info.crocmagnon.codeberg.page."
+}
+
+resource "ovh_domain_zone_record" "augendre_info_mobileconfig" {
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "mobileconfig"
+  fieldtype = "CNAME"
+  ttl       = local.domain_long_ttl
+  target    = "master.mobileconfig-generator.crocmagnon.codeberg.page."
 }
 
 resource "ovh_domain_zone_record" "augendre_info_vps_1" {
@@ -133,7 +141,7 @@ module "augendre_info_migadu" {
 module "augendre_info_mailgun" {
   source        = "./modules/mailgun"
   zone          = data.ovh_domain_zone.augendre_info.name
-  ttl           = 60
+  ttl           = local.domain_short_ttl
   endpoint      = "us"
   dmarc         = "v=DMARC1; p=quarantine; pct=100; fo=1; ri=3600; rua=mailto:dbbd0f84@dmarc.mailgun.org,mailto:c031cfb4@inbox.ondmarc.com; ruf=mailto:dbbd0f84@dmarc.mailgun.org,mailto:c031cfb4@inbox.ondmarc.com;"
   dkim_selector = "k1"
