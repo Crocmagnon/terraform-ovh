@@ -28,7 +28,7 @@ resource "ovh_domain_zone_record" "coccomagnard_fr_voyages" {
   zone      = data.ovh_domain_zone.coccomagnard_fr.name
   subdomain = "voyages"
   fieldtype = "CNAME"
-  ttl       = 60
+  ttl       = local.domain_long_ttl
   target    = "pika.page."
 }
 
@@ -49,7 +49,7 @@ module "coccomagnard_fr_migadu" {
 module "coccomagnard_fr_mailgun" {
   source        = "./modules/mailgun"
   zone          = data.ovh_domain_zone.coccomagnard_fr.name
-  ttl           = 60
+  ttl           = local.domain_short_ttl
   endpoint      = "eu"
   dmarc         = "v=DMARC1; p=quarantine; pct=100; fo=1; ri=3600; rua=mailto:dbbd0f84@dmarc.mailgun.org,mailto:c031cfb4@inbox.ondmarc.com; ruf=mailto:dbbd0f84@dmarc.mailgun.org,mailto:c031cfb4@inbox.ondmarc.com;"
   dkim_selector = "email"

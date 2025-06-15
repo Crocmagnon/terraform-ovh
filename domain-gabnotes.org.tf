@@ -27,14 +27,14 @@ resource "ovh_domain_zone_record" "gabnotes_org_apex" {
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = ""
   fieldtype = "A"
-  ttl       = 60
+  ttl       = local.domain_long_ttl
   target    = "216.24.57.1" # pika.page
 }
 resource "ovh_domain_zone_record" "gabnotes_org_www" {
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = "www"
   fieldtype = "CNAME"
-  ttl       = 60
+  ttl       = local.domain_long_ttl
   target    = "pika.page."
 }
 
@@ -55,7 +55,7 @@ module "gabnotes_org_migadu" {
 module "gabnotes_org_mailgun" {
   source        = "./modules/mailgun"
   zone          = data.ovh_domain_zone.gabnotes_org.name
-  ttl           = 60
+  ttl           = local.domain_short_ttl
   endpoint      = "eu"
   dmarc         = "v=DMARC1; p=quarantine; pct=100; fo=1; ri=3600; rua=mailto:dbbd0f84@dmarc.mailgun.org,mailto:c031cfb4@inbox.ondmarc.com; ruf=mailto:dbbd0f84@dmarc.mailgun.org,mailto:c031cfb4@inbox.ondmarc.com;"
   dkim_selector = "mailo"
