@@ -86,14 +86,6 @@ resource "ovh_domain_zone_record" "augendre_info_5274823448" {
   target    = local.domain_target_vps_public
 }
 
-resource "ovh_domain_zone_record" "augendre_info_5295054193" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "ghost"
-  fieldtype = "CNAME"
-  ttl       = local.domain_long_ttl
-  target    = local.domain_target_vps_public
-}
-
 resource "ovh_domain_zone_record" "augendre_info_5302259536" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "qr"
