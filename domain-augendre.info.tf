@@ -124,6 +124,14 @@ resource "ovh_domain_zone_record" "augendre_info_vps_1" {
   target    = "${data.ovh_vps.vps_1.service_name}."
 }
 
+resource "ovh_domain_zone_record" "augendre_info_voyages_lois" {
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "voyages-lois"
+  fieldtype = "CNAME"
+  ttl       = 60
+  target    = local.domain_target_vps_public
+}
+
 
 # ----------------------------------------------------------------------
 # Migadu
