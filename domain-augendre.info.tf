@@ -129,7 +129,7 @@ resource "ovh_domain_zone_record" "augendre_info_voyages_lois" {
   subdomain = "voyages-lois"
   fieldtype = "CNAME"
   ttl       = 60
-  target    = local.domain_target_vps_public
+  target    = "pika.page."
 }
 
 
