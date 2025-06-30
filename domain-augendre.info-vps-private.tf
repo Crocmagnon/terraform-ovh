@@ -45,3 +45,19 @@ resource "ovh_domain_zone_record" "augendre_info_5274823442" {
   ttl       = local.domain_short_ttl
   target    = local.domain_target_vps_tailscale
 }
+
+resource "ovh_domain_zone_record" "augendre_info_webdav" {
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "webdav"
+  fieldtype = "CNAME"
+  ttl       = 60
+  target    = local.domain_target_vps_tailscale
+}
+
+resource "ovh_domain_zone_record" "augendre_info_radicale" {
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "radicale"
+  fieldtype = "CNAME"
+  ttl       = 60
+  target    = local.domain_target_vps_tailscale
+}
