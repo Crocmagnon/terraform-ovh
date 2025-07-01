@@ -10,191 +10,45 @@ resource "ovh_cloud_project" "catch_all" {
 
 ### S3 for terraform backend
 
-resource "ovh_cloud_project_user" "terraform" {
-  service_name = ovh_cloud_project.catch_all.id
-  description  = "used to access terraform state"
-  role_names = [
-    "objectstore_operator"
-  ]
-}
+module "s3_terraform" {
+  source = "./modules/s3"
 
-resource "ovh_cloud_project_user_s3_credential" "terraform" {
-  service_name = ovh_cloud_project_user.terraform.service_name
-  user_id      = ovh_cloud_project_user.terraform.id
-}
-
-resource "ovh_cloud_project_storage" "terraform_state" {
-  service_name = ovh_cloud_project.catch_all.id
-  region_name  = "GRA"
-  name         = "terraform-state-gaugendre"
-  versioning = {
-    status = "enabled"
-  }
-  encryption = {
-    sse_algorithm = "AES256"
-  }
-}
-
-resource "ovh_cloud_project_user_s3_policy" "terraform_rw" {
-  service_name = ovh_cloud_project_user.terraform.service_name
-  user_id      = ovh_cloud_project_user.terraform.id
-  policy = jsonencode({
-    Statement = [
-      {
-        Sid    = "TerraformRW"
-        Effect = "Allow"
-        Action = [
-          "s3:GetObject",
-          "s3:PutObject",
-          "s3:ListBucket",
-        ]
-        Resource = [
-          "arn:aws:s3:::${ovh_cloud_project_storage.terraform_state.name}",
-          "arn:aws:s3:::${ovh_cloud_project_storage.terraform_state.name}/*",
-        ]
-      },
-    ]
-  })
+  name       = "terraform-state"
+  project_id = ovh_cloud_project.catch_all.id
+  encryption = true
+  versioning = true
 }
 
 ### S3 for restic backups
 
-resource "ovh_cloud_project_user" "restic_backups" {
-  service_name = ovh_cloud_project.catch_all.id
-  description  = "used to access restic backups"
-  role_names = [
-    "objectstore_operator"
-  ]
-}
+module "s3_restic_backups" {
+  source = "./modules/s3"
 
-resource "ovh_cloud_project_user_s3_credential" "restic_backups" {
-  service_name = ovh_cloud_project_user.restic_backups.service_name
-  user_id      = ovh_cloud_project_user.restic_backups.id
-}
-
-resource "ovh_cloud_project_storage" "restic_backups" {
-  service_name = ovh_cloud_project.catch_all.id
-  region_name  = "GRA"
-  name         = "restic-backups-gaugendre"
-  encryption = {
-    sse_algorithm = "AES256"
-  }
-}
-
-resource "ovh_cloud_project_user_s3_policy" "restic_backups_rw" {
-  service_name = ovh_cloud_project_user.restic_backups.service_name
-  user_id      = ovh_cloud_project_user.restic_backups.id
-  policy = jsonencode({
-    Statement = [
-      {
-        Sid    = "ResticBackupsRW"
-        Effect = "Allow"
-        Action = [
-          "s3:GetObject",
-          "s3:PutObject",
-          "s3:DeleteObject",
-          "s3:ListBucket",
-        ]
-        Resource = [
-          "arn:aws:s3:::${ovh_cloud_project_storage.restic_backups.name}",
-          "arn:aws:s3:::${ovh_cloud_project_storage.restic_backups.name}/*",
-        ]
-      },
-    ]
-  })
+  name       = "restic-backups"
+  project_id = ovh_cloud_project.catch_all.id
+  encryption = true
+  versioning = false
 }
 
 ### S3 for pCloud sync
 
-resource "ovh_cloud_project_user" "pcloud_sync" {
-  service_name = ovh_cloud_project.catch_all.id
-  description  = "used to access pcloud_sync"
-  role_names = [
-    "objectstore_operator"
-  ]
-}
+module "s3_pcloud_sync" {
+  source = "./modules/s3"
 
-resource "ovh_cloud_project_user_s3_credential" "pcloud_sync" {
-  service_name = ovh_cloud_project_user.pcloud_sync.service_name
-  user_id      = ovh_cloud_project_user.pcloud_sync.id
-}
-
-resource "ovh_cloud_project_storage" "pcloud_sync" {
-  service_name = ovh_cloud_project.catch_all.id
-  region_name  = "GRA"
-  name         = "pcloud-sync-gaugendre"
-  encryption = {
-    sse_algorithm = "AES256"
-  }
-}
-
-resource "ovh_cloud_project_user_s3_policy" "pcloud_sync_rw" {
-  service_name = ovh_cloud_project_user.pcloud_sync.service_name
-  user_id      = ovh_cloud_project_user.pcloud_sync.id
-  policy = jsonencode({
-    Statement = [
-      {
-        Sid    = "pCloudSyncRW"
-        Effect = "Allow"
-        Action = [
-          "s3:GetObject",
-          "s3:PutObject",
-          "s3:DeleteObject",
-          "s3:ListBucket",
-          "s3:PutObjectAcl",
-        ]
-        Resource = [
-          "arn:aws:s3:::${ovh_cloud_project_storage.pcloud_sync.name}",
-          "arn:aws:s3:::${ovh_cloud_project_storage.pcloud_sync.name}/*",
-        ]
-      },
-    ]
-  })
+  name       = "pcloud_sync"
+  project_id = ovh_cloud_project.catch_all.id
+  encryption = true
+  versioning = false
 }
 
 ### S3 for restic vps backups
 
-resource "ovh_cloud_project_user" "restic_vps_backups" {
-  service_name = ovh_cloud_project.catch_all.id
-  description  = "used to access restic_vps backups"
-  role_names = [
-    "objectstore_operator"
-  ]
-}
+module "s3_restic_vps_backups" {
+  source = "./modules/s3"
 
-resource "ovh_cloud_project_user_s3_credential" "restic_vps_backups" {
-  service_name = ovh_cloud_project_user.restic_vps_backups.service_name
-  user_id      = ovh_cloud_project_user.restic_vps_backups.id
-}
-
-resource "ovh_cloud_project_storage" "restic_vps_backups" {
-  service_name = ovh_cloud_project.catch_all.id
-  region_name  = "SBG"
-  name         = "restic-vps-backups-gaugendre"
-  encryption = {
-    sse_algorithm = "AES256"
-  }
-}
-
-resource "ovh_cloud_project_user_s3_policy" "restic_vps_backups_rw" {
-  service_name = ovh_cloud_project_user.restic_vps_backups.service_name
-  user_id      = ovh_cloud_project_user.restic_vps_backups.id
-  policy = jsonencode({
-    Statement = [
-      {
-        Sid    = "ResticVPSBackupsRW"
-        Effect = "Allow"
-        Action = [
-          "s3:GetObject",
-          "s3:PutObject",
-          "s3:DeleteObject",
-          "s3:ListBucket",
-        ]
-        Resource = [
-          "arn:aws:s3:::${ovh_cloud_project_storage.restic_vps_backups.name}",
-          "arn:aws:s3:::${ovh_cloud_project_storage.restic_vps_backups.name}/*",
-        ]
-      },
-    ]
-  })
+  name       = "restic_vps-backups"
+  project_id = ovh_cloud_project.catch_all.id
+  encryption = true
+  versioning = false
+  region     = "SBG"
 }
