@@ -48,9 +48,9 @@ resource "ovh_cloud_project_storage" "this" {
   service_name = var.project_id
   region_name  = var.region
   name         = "${local.project_name}-gaugendre"
-  versioning = {
-    status = var.versioning ? "enabled" : "disabled"
-  }
+  versioning = var.versioning ? {
+    status = "enabled"
+  } : null
   encryption = {
     sse_algorithm = var.encryption ? "AES256" : "plaintext"
   }

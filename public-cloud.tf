@@ -52,3 +52,12 @@ module "s3_restic_vps_backups" {
   versioning = false
   region     = "SBG"
 }
+
+module "s3_immich" {
+  source = "./modules/s3"
+
+  name       = "immich"
+  project_id = ovh_cloud_project.catch_all.id
+  encryption = true
+  versioning = false
+}
