@@ -1,7 +1,7 @@
 resource "ovh_domain_zone_record" "augendre_info_5274823433" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "plex"
-  fieldtype = "CNAME"
+  fieldtype = "A"
   ttl       = local.domain_short_ttl
   target    = local.domain_target_home_tailscale
 }
@@ -9,7 +9,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823433" {
 resource "ovh_domain_zone_record" "augendre_info_5274823434" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "prowlarr"
-  fieldtype = "CNAME"
+  fieldtype = "A"
   ttl       = local.domain_short_ttl
   target    = local.domain_target_home_tailscale
 }
@@ -17,7 +17,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823434" {
 resource "ovh_domain_zone_record" "augendre_info_5274823436" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "radarr"
-  fieldtype = "CNAME"
+  fieldtype = "A"
   ttl       = local.domain_short_ttl
   target    = local.domain_target_home_tailscale
 }
@@ -25,7 +25,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823436" {
 resource "ovh_domain_zone_record" "augendre_info_5274823439" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "sonarr"
-  fieldtype = "CNAME"
+  fieldtype = "A"
   ttl       = local.domain_short_ttl
   target    = local.domain_target_home_tailscale
 }
@@ -33,7 +33,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823439" {
 resource "ovh_domain_zone_record" "augendre_info_5274823444" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "transmission"
-  fieldtype = "CNAME"
+  fieldtype = "A"
   ttl       = local.domain_short_ttl
   target    = local.domain_target_home_tailscale
 }
@@ -41,7 +41,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823444" {
 resource "ovh_domain_zone_record" "augendre_info_5281160975" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "portainer"
-  fieldtype = "CNAME"
+  fieldtype = "A"
   ttl       = local.domain_short_ttl
   target    = local.domain_target_home_tailscale
 }
@@ -49,7 +49,7 @@ resource "ovh_domain_zone_record" "augendre_info_5281160975" {
 resource "ovh_domain_zone_record" "augendre_info_5325568092" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "prusalink"
-  fieldtype = "CNAME"
+  fieldtype = "A"
   ttl       = local.domain_short_ttl
   target    = local.domain_target_home_tailscale
 }
@@ -73,7 +73,7 @@ resource "ovh_domain_zone_record" "augendre_info_hass_v6" {
 resource "ovh_domain_zone_record" "augendre_info_vps_control" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "vps-control"
-  fieldtype = "CNAME"
+  fieldtype = "A"
   ttl       = local.domain_short_ttl
   target    = local.domain_target_home_tailscale
 }
