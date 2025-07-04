@@ -1,79 +1,89 @@
-resource "ovh_domain_zone_record" "augendre_info_5274823404" {
+module "augendre_info_5274823404" {
+  source    = "./modules/five_a_batteries"
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "code"
-  fieldtype = "A"
   ttl       = local.domain_short_ttl
-  target    = local.domain_target_vps_tailscale
+  ipv4      = local.domain_target_vps_tailscale_v4
+  ipv6      = local.domain_target_vps_tailscale_v6
 }
 
-resource "ovh_domain_zone_record" "augendre_info_5274823443" {
+module "augendre_info_5274823443" {
+  source    = "./modules/five_a_batteries"
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "test"
-  fieldtype = "A"
   ttl       = local.domain_short_ttl
-  target    = local.domain_target_vps_tailscale
+  ipv4      = local.domain_target_vps_tailscale_v4
+  ipv6      = local.domain_target_vps_tailscale_v6
 }
 
-resource "ovh_domain_zone_record" "augendre_info_portainer_vps" {
+module "augendre_info_portainer_vps" {
+  source    = "./modules/five_a_batteries"
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "portainer-vps-1"
-  fieldtype = "A"
   ttl       = local.domain_short_ttl
-  target    = local.domain_target_vps_tailscale
+  ipv4      = local.domain_target_vps_tailscale_v4
+  ipv6      = local.domain_target_vps_tailscale_v6
 }
 
-resource "ovh_domain_zone_record" "augendre_info_5345300513" {
+module "augendre_info_5345300513" {
+  source    = "./modules/five_a_batteries"
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "pdf"
-  fieldtype = "A"
   ttl       = local.domain_short_ttl
-  target    = local.domain_target_vps_tailscale
+  ipv4      = local.domain_target_vps_tailscale_v4
+  ipv6      = local.domain_target_vps_tailscale_v6
 }
 
-resource "ovh_domain_zone_record" "augendre_info_5337967994" {
+module "augendre_info_5337967994" {
+  source    = "./modules/five_a_batteries"
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "paperless"
-  fieldtype = "A"
   ttl       = local.domain_short_ttl
-  target    = local.domain_target_vps_tailscale
+  ipv4      = local.domain_target_vps_tailscale_v4
+  ipv6      = local.domain_target_vps_tailscale_v6
 }
 
-resource "ovh_domain_zone_record" "augendre_info_5274823442" {
+module "augendre_info_5274823442" {
+  source    = "./modules/five_a_batteries"
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "tcl"
-  fieldtype = "A"
   ttl       = local.domain_short_ttl
-  target    = local.domain_target_vps_tailscale
+  ipv4      = local.domain_target_vps_tailscale_v4
+  ipv6      = local.domain_target_vps_tailscale_v6
 }
 
-resource "ovh_domain_zone_record" "augendre_info_webdav" {
+module "augendre_info_webdav" {
+  source    = "./modules/five_a_batteries"
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "webdav"
-  fieldtype = "A"
   ttl       = local.domain_short_ttl
-  target    = local.domain_target_vps_tailscale
+  ipv4      = local.domain_target_vps_tailscale_v4
+  ipv6      = local.domain_target_vps_tailscale_v6
 }
 
-resource "ovh_domain_zone_record" "augendre_info_radicale" {
+module "augendre_info_radicale" {
+  source    = "./modules/five_a_batteries"
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "radicale"
-  fieldtype = "A"
   ttl       = local.domain_short_ttl
-  target    = local.domain_target_vps_tailscale
+  ipv4      = local.domain_target_vps_tailscale_v4
+  ipv6      = local.domain_target_vps_tailscale_v6
 }
 
-resource "ovh_domain_zone_record" "augendre_info_immich" {
+module "augendre_info_immich" {
+  source    = "./modules/five_a_batteries"
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "immich"
-  fieldtype = "A"
   ttl       = local.domain_short_ttl
-  target    = local.domain_target_vps_tailscale
+  ipv4      = local.domain_target_vps_tailscale_v4
+  ipv6      = local.domain_target_vps_tailscale_v6
 }
 
-resource "ovh_domain_zone_record" "augendre_info_fmd" {
+module "augendre_info_fmd" {
+  source    = "./modules/five_a_batteries"
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "fmd"
-  fieldtype = "A"
   ttl       = local.domain_short_ttl
-  target    = local.domain_target_vps_tailscale
+  ipv4      = local.domain_target_vps_tailscale_v4
+  ipv6      = local.domain_target_vps_tailscale_v6
 }

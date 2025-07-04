@@ -54,20 +54,13 @@ resource "ovh_domain_zone_record" "augendre_info_5325568092" {
   target    = local.domain_target_home_tailscale
 }
 
-resource "ovh_domain_zone_record" "augendre_info_hass_v4" {
+module "augendre_info_hass" {
+  source    = "./modules/five_a_batteries"
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "hass"
-  fieldtype = "A"
   ttl       = local.domain_short_ttl
-  target    = "192.168.0.9"
-}
-
-resource "ovh_domain_zone_record" "augendre_info_hass_v6" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "hass"
-  fieldtype = "AAAA"
-  ttl       = local.domain_short_ttl
-  target    = "2a01:e0a:325:a1c0:a510:a88a:2977:5433"
+  ipv4      = "192.168.0.9"
+  ipv6      = "2a01:e0a:325:a1c0:a510:a88a:2977:5433"
 }
 
 resource "ovh_domain_zone_record" "augendre_info_vps_control" {
