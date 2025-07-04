@@ -69,3 +69,11 @@ resource "ovh_domain_zone_record" "augendre_info_immich" {
   ttl       = local.domain_short_ttl
   target    = local.domain_target_vps_tailscale
 }
+
+resource "ovh_domain_zone_record" "augendre_info_fmd" {
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "fmd"
+  fieldtype = "A"
+  ttl       = local.domain_short_ttl
+  target    = local.domain_target_vps_tailscale
+}
