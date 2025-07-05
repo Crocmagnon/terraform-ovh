@@ -53,6 +53,8 @@ module "s3_restic_vps_backups" {
   region     = "SBG"
 }
 
+# TODO add lifecycle rules (see immich-lifecycle) when they become available
+
 module "s3_immich" {
   source = "./modules/s3"
 
@@ -74,4 +76,5 @@ module "s3_immich_backup" {
   project_id = ovh_cloud_project.catch_all.id
   encryption = true
   versioning = true
+  region     = "SBG"
 }
