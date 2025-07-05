@@ -26,6 +26,16 @@ variable "region" {
   description = "S3 region, defaults to GRA"
 }
 
+variable "replication_destination" {
+  type = object({
+    name          = string
+    region        = string
+    storage_class = string
+  })
+  default     = null
+  description = "replication destination"
+}
+
 locals {
   description_name = replace(var.name, "-", " ")
   project_name     = replace(var.name, "_", "-")
@@ -54,6 +64,15 @@ resource "ovh_cloud_project_storage" "this" {
   encryption = {
     sse_algorithm = var.encryption ? "AES256" : "plaintext"
   }
+  replication = var.replication_destination == null ? null : {
+    rules = [{
+      id                        = "${local.project_name}-backup"
+      destination               = var.replication_destination
+      delete_marker_replication = "enabled"
+      priority                  = 500
+      status                    = "enabled"
+    }]
+  }
 }
 
 resource "ovh_cloud_project_user_s3_policy" "this" {
@@ -78,4 +97,14 @@ resource "ovh_cloud_project_user_s3_policy" "this" {
       },
     ]
   })
+}
+
+output "bucket_name" {
+  value       = ovh_cloud_project_storage.this.name
+  description = "Created bucket name"
+}
+
+output "bucket_region" {
+  value       = ovh_cloud_project_storage.this.region_name
+  description = "Created bucket region"
 }
