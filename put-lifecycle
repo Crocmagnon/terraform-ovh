@@ -1,3 +1,4 @@
 #!/bin/bash
 
-aws s3api get-bucket-lifecycle-configuration --bucket pcloud-sync-gaugendre  --profile pcloud-sync
+aws s3api put-bucket-lifecycle-configuration --bucket pcloud-sync-gaugendre --lifecycle-configuration file://lifecycle-pcloud.json --profile pcloud-sync
+aws s3api put-bucket-lifecycle-configuration --bucket terraform-state-gaugendre --lifecycle-configuration file://lifecycle-terraform.json --profile terraform-state
