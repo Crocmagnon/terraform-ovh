@@ -64,8 +64,8 @@ resource "ovh_cloud_project_storage" "this" {
   encryption = {
     sse_algorithm = var.encryption ? "AES256" : "plaintext"
   }
-  replication = var.replication_destination == null ? null : {
-    rules = [{
+  replication = {
+    rules = var.replication_destination == null ? [] : [{
       id                        = "${local.project_name}-backup"
       destination               = var.replication_destination
       delete_marker_replication = "enabled"
