@@ -38,7 +38,7 @@ module "s3_pcloud_sync" {
   name       = "pcloud_sync"
   project_id = ovh_cloud_project.catch_all.id
   encryption = true
-  versioning = false
+  versioning = true
 }
 
 ### S3 for restic vps backups
