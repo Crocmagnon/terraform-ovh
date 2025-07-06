@@ -62,19 +62,4 @@ module "s3_immich" {
   project_id = ovh_cloud_project.catch_all.id
   encryption = true
   versioning = true
-  replication_destination = {
-    name          = module.s3_immich_backup.bucket_name
-    region        = module.s3_immich_backup.bucket_region
-    storage_class = "STANDARD_IA" # infrequent access
-  }
-}
-
-module "s3_immich_backup" {
-  source = "./modules/s3"
-
-  name       = "immich-backup"
-  project_id = ovh_cloud_project.catch_all.id
-  encryption = true
-  versioning = true
-  region     = "SBG"
 }
