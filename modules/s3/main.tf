@@ -91,6 +91,8 @@ resource "ovh_cloud_project_user_s3_policy" "this" {
           "s3:PutObjectAcl",
           "s3:GetBucketVersioning",
           "s3:ListBucketVersions",
+          "s3:GetLifecycleConfiguration",
+          "s3:PutLifecycleConfiguration",
         ]
         Resource = [
           "arn:aws:s3:::${ovh_cloud_project_storage.this.name}",
