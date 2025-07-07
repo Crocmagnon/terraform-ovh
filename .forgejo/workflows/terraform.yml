@@ -31,7 +31,8 @@ jobs:
 
     - name: git-crypt
       run: |-
-        sudo apt install git-crypt
+        sudo apt-get update
+        sudo apt-get install git-crypt
         echo $GIT_CRYPT_KEY | base64 -d > /tmp/git-crypt-key
         git crypt unlock /tmp/git-crypt-key
 
