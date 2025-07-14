@@ -109,11 +109,3 @@ resource "ovh_domain_zone_record" "augendre_info_mariage" {
   ttl       = local.domain_long_ttl
   target    = local.domain_target_vps_public
 }
-
-resource "ovh_domain_zone_record" "augendre_info_photos" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "photos"
-  fieldtype = "CNAME"
-  ttl       = local.domain_short_ttl
-  target    = local.domain_target_vps_public
-}
