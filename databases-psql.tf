@@ -74,3 +74,17 @@ module "db_wallabag" {
   db_password  = var.psql_wallabag_password
   service_name = data.ovh_hosting_privatedatabase.psql.service_name
 }
+
+variable "psql_mealie_password" {
+  description = "mealie password"
+  type        = string
+  sensitive   = true
+}
+
+module "db_mealie" {
+  source = "./modules/db"
+
+  db_name      = "mealie"
+  db_password  = var.psql_mealie_password
+  service_name = data.ovh_hosting_privatedatabase.psql.service_name
+}
