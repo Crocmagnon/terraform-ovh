@@ -87,3 +87,12 @@ module "augendre_info_fmd" {
   ipv4      = local.domain_target_vps_tailscale_v4
   ipv6      = local.domain_target_vps_tailscale_v6
 }
+
+module "augendre_info_mealie" {
+  source    = "./modules/five_a_batteries"
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "mealie"
+  ttl       = local.domain_short_ttl
+  ipv4      = local.domain_target_vps_tailscale_v4
+  ipv6      = local.domain_target_vps_tailscale_v6
+}
