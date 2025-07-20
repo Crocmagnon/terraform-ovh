@@ -52,42 +52,6 @@ module "augendre_info_5274823442" {
   ipv6      = local.domain_target_vps_tailscale_v6
 }
 
-module "augendre_info_webdav" {
-  source    = "./modules/five_a_batteries"
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "webdav"
-  ttl       = local.domain_short_ttl
-  ipv4      = local.domain_target_vps_tailscale_v4
-  ipv6      = local.domain_target_vps_tailscale_v6
-}
-
-module "augendre_info_radicale" {
-  source    = "./modules/five_a_batteries"
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "radicale"
-  ttl       = local.domain_short_ttl
-  ipv4      = local.domain_target_vps_tailscale_v4
-  ipv6      = local.domain_target_vps_tailscale_v6
-}
-
-module "augendre_info_photos" {
-  source    = "./modules/five_a_batteries"
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "photos"
-  ttl       = local.domain_short_ttl
-  ipv4      = local.domain_target_vps_tailscale_v4
-  ipv6      = local.domain_target_vps_tailscale_v6
-}
-
-module "augendre_info_fmd" {
-  source    = "./modules/five_a_batteries"
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "fmd"
-  ttl       = local.domain_short_ttl
-  ipv4      = local.domain_target_vps_tailscale_v4
-  ipv6      = local.domain_target_vps_tailscale_v6
-}
-
 module "augendre_info_mealie" {
   source    = "./modules/five_a_batteries"
   zone      = data.ovh_domain_zone.augendre_info.name
