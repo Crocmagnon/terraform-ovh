@@ -19,7 +19,7 @@ module "augendre_info_5274823443" {
 module "augendre_info_portainer_vps" {
   source    = "./modules/five_a_batteries"
   zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "portainer-vps-1"
+  subdomain = "portainer-vps"
   ttl       = local.domain_short_ttl
   ipv4      = local.domain_target_vps_tailscale_v4
   ipv6      = local.domain_target_vps_tailscale_v6

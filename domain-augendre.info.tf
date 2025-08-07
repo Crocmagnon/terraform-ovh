@@ -43,7 +43,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823384" {
 # Web services
 # ----------------------------------------------------------------------
 resource "ovh_domain_zone_record" "augendre_info_apex_v4" {
-  for_each  = local.ip_vps_1_v4
+  for_each  = local.ip_vps_2_v4
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = ""
   fieldtype = "A"
@@ -52,7 +52,7 @@ resource "ovh_domain_zone_record" "augendre_info_apex_v4" {
 }
 
 resource "ovh_domain_zone_record" "augendre_info_apex_v6" {
-  for_each  = local.ip_vps_1_v6
+  for_each  = local.ip_vps_2_v6
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = ""
   fieldtype = "AAAA"
@@ -122,6 +122,14 @@ resource "ovh_domain_zone_record" "augendre_info_vps_1" {
   fieldtype = "CNAME"
   ttl       = local.domain_long_ttl
   target    = "${data.ovh_vps.vps_1.service_name}."
+}
+
+resource "ovh_domain_zone_record" "augendre_info_vps_2" {
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "vps-2"
+  fieldtype = "CNAME"
+  ttl       = local.domain_long_ttl
+  target    = "${data.ovh_vps.vps_2.service_name}."
 }
 
 resource "ovh_domain_zone_record" "augendre_info_voyages_lois" {
