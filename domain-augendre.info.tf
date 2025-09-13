@@ -116,14 +116,6 @@ resource "ovh_domain_zone_record" "augendre_info_mobileconfig" {
   target    = "master.mobileconfig-generator.crocmagnon.codeberg.page."
 }
 
-resource "ovh_domain_zone_record" "augendre_info_vps_1" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "vps-1"
-  fieldtype = "CNAME"
-  ttl       = local.domain_long_ttl
-  target    = "${data.ovh_vps.vps_1.service_name}."
-}
-
 resource "ovh_domain_zone_record" "augendre_info_vps_2" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "vps-2"
