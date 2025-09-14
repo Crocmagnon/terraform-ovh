@@ -69,12 +69,3 @@ module "augendre_info_hass" {
   ipv4      = "192.168.0.9"
   ipv6      = "2a01:e0a:325:a1c0:a510:a88a:2977:5433"
 }
-
-module "augendre_info_vps_control" {
-  source    = "./modules/five_a_batteries"
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "vps-control"
-  ttl       = local.domain_short_ttl
-  ipv4      = local.domain_target_home_tailscale_v4
-  ipv6      = local.domain_target_home_tailscale_v6
-}
