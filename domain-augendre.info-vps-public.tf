@@ -109,3 +109,11 @@ resource "ovh_domain_zone_record" "augendre_info_mariage" {
   ttl       = local.domain_long_ttl
   target    = local.domain_target_vps_public
 }
+
+resource "ovh_domain_zone_record" "augendre_info_simulator" {
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "simulator"
+  fieldtype = "CNAME"
+  ttl       = local.domain_long_ttl
+  target    = local.domain_target_vps_public
+}
