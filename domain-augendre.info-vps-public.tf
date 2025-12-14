@@ -70,6 +70,14 @@ resource "ovh_domain_zone_record" "augendre_info_5274823437" {
   target    = local.domain_target_vps_public
 }
 
+resource "ovh_domain_zone_record" "augendre_info_reader_3" {
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "reader3"
+  fieldtype = "CNAME"
+  ttl       = local.domain_long_ttl
+  target    = "vps-3.augendre.info."
+}
+
 resource "ovh_domain_zone_record" "augendre_info_5274823440" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "static"
