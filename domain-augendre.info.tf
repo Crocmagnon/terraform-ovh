@@ -108,6 +108,22 @@ resource "ovh_domain_zone_record" "augendre_info_go_cname" {
   target    = "main.go_augendre_info.crocmagnon.codeberg.page."
 }
 
+resource "ovh_domain_zone_record" "augendre_info_5302259536" {
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "qr"
+  fieldtype = "CNAME"
+  ttl       = local.domain_long_ttl
+  target    = "main.qrcode_web.crocmagnon.codeberg.page."
+}
+
+resource "ovh_domain_zone_record" "augendre_info_5302259539" {
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "qrcode"
+  fieldtype = "CNAME"
+  ttl       = local.domain_long_ttl
+  target    = "main.qrcode_web.crocmagnon.codeberg.page."
+}
+
 resource "ovh_domain_zone_record" "augendre_info_mobileconfig" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "mobileconfig"
