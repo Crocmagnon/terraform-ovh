@@ -124,6 +124,14 @@ resource "ovh_domain_zone_record" "augendre_info_5302259539" {
   target    = "main.qrcode_web.crocmagnon.codeberg.page."
 }
 
+resource "ovh_domain_zone_record" "augendre_info_potain" {
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "potain"
+  fieldtype = "CNAME"
+  ttl       = local.domain_long_ttl
+  target    = "main.potain.crocmagnon.codeberg.page."
+}
+
 resource "ovh_domain_zone_record" "augendre_info_mobileconfig" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "mobileconfig"
