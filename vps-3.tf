@@ -1,5 +1,5 @@
 data "ovh_vps" "vps_3" {
-  service_name = "vps-a9dbfd5c.vps.ovh.net"
+  service_name = "vps-6b408694.vps.ovh.net"
 }
 
 resource "ovh_ip_firewall" "vps_3_firewall" {
