@@ -1,28 +1,4 @@
-resource "ovh_domain_zone_record" "augendre_info_5274823398" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "bin"
-  fieldtype = "CNAME"
-  ttl       = local.domain_long_ttl
-  target    = local.domain_target_vps_public
-}
-
-resource "ovh_domain_zone_record" "augendre_info_5274823432" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "paste"
-  fieldtype = "CNAME"
-  ttl       = local.domain_long_ttl
-  target    = local.domain_target_vps_public
-}
-
-resource "ovh_domain_zone_record" "augendre_info_5274823400" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "charasheet"
-  fieldtype = "CNAME"
-  ttl       = local.domain_long_ttl
-  target    = local.domain_target_vps_public
-}
-
-resource "ovh_domain_zone_record" "augendre_info_5274823406" {
+resource "ovh_domain_zone_record" "augendre_info_cv" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "cv-gabriel"
   fieldtype = "CNAME"
@@ -30,17 +6,12 @@ resource "ovh_domain_zone_record" "augendre_info_5274823406" {
   target    = local.domain_target_vps_3_public
 }
 
-resource "ovh_domain_zone_record" "augendre_info_5274823412" {
+resource "ovh_domain_zone_record" "augendre_info_static" {
   zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "fournitures"
+  subdomain = "static"
   fieldtype = "CNAME"
   ttl       = local.domain_long_ttl
-  target    = local.domain_target_vps_public
-}
-
-moved {
-  from = ovh_domain_zone_record.augendre_info_5274823416
-  to   = ovh_domain_zone_record.augendre_info_git
+  target    = local.domain_target_vps_3_public
 }
 
 resource "ovh_domain_zone_record" "augendre_info_git" {
@@ -51,11 +22,6 @@ resource "ovh_domain_zone_record" "augendre_info_git" {
   target    = local.domain_target_vps_3_public
 }
 
-moved {
-  from = ovh_domain_zone_record.augendre_info_5274823424
-  to   = ovh_domain_zone_record.augendre_info_mail
-}
-
 resource "ovh_domain_zone_record" "augendre_info_mail" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "mail"
@@ -64,31 +30,15 @@ resource "ovh_domain_zone_record" "augendre_info_mail" {
   target    = local.domain_target_vps_3_public
 }
 
-resource "ovh_domain_zone_record" "augendre_info_5274823425" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "manuels"
-  fieldtype = "CNAME"
-  ttl       = local.domain_long_ttl
-  target    = local.domain_target_vps_public
-}
-
-resource "ovh_domain_zone_record" "augendre_info_5274823437" {
+resource "ovh_domain_zone_record" "augendre_info_reader" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "reader"
   fieldtype = "CNAME"
   ttl       = local.domain_long_ttl
-  target    = "vps-3.augendre.info."
+  target    = local.domain_target_vps_3_public
 }
 
-resource "ovh_domain_zone_record" "augendre_info_5274823440" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "static"
-  fieldtype = "CNAME"
-  ttl       = local.domain_long_ttl
-  target    = local.domain_target_vps_public
-}
-
-resource "ovh_domain_zone_record" "augendre_info_5274823448" {
+resource "ovh_domain_zone_record" "augendre_info_wallabag" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "wallabag"
   fieldtype = "CNAME"
