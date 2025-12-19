@@ -27,7 +27,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823406" {
   subdomain = "cv-gabriel"
   fieldtype = "CNAME"
   ttl       = local.domain_long_ttl
-  target    = local.domain_target_vps_public
+  target    = local.domain_target_vps_3_public
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5274823412" {
@@ -38,20 +38,30 @@ resource "ovh_domain_zone_record" "augendre_info_5274823412" {
   target    = local.domain_target_vps_public
 }
 
-resource "ovh_domain_zone_record" "augendre_info_5274823416" {
+moved {
+  from = ovh_domain_zone_record.augendre_info_5274823416
+  to   = ovh_domain_zone_record.augendre_info_git
+}
+
+resource "ovh_domain_zone_record" "augendre_info_git" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "git"
   fieldtype = "CNAME"
   ttl       = local.domain_long_ttl
-  target    = local.domain_target_vps_public
+  target    = local.domain_target_vps_3_public
 }
 
-resource "ovh_domain_zone_record" "augendre_info_5274823424" {
+moved {
+  from = ovh_domain_zone_record.augendre_info_5274823424
+  to   = ovh_domain_zone_record.augendre_info_mail
+}
+
+resource "ovh_domain_zone_record" "augendre_info_mail" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "mail"
   fieldtype = "CNAME"
   ttl       = local.domain_long_ttl
-  target    = local.domain_target_vps_public
+  target    = local.domain_target_vps_3_public
 }
 
 resource "ovh_domain_zone_record" "augendre_info_5274823425" {
@@ -91,7 +101,7 @@ resource "ovh_domain_zone_record" "augendre_info_mariage" {
   subdomain = "mariage"
   fieldtype = "CNAME"
   ttl       = local.domain_long_ttl
-  target    = local.domain_target_vps_public
+  target    = local.domain_target_vps_3_public
 }
 
 resource "ovh_domain_zone_record" "augendre_info_simulator" {
