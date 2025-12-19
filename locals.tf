@@ -9,7 +9,7 @@ locals {
   domain_long_ttl                  = 600
   domain_short_ttl                 = 600
   domain_target_vps_public         = "vps-2.augendre.info."
-  domain_target_vps_3_public       = "vps-3.augendre.info"
+  domain_target_vps_3_public       = "vps-3.augendre.info."
   domain_target_vps_tailscale_v4   = "100.98.152.47"
   domain_target_vps_tailscale_v6   = "fd7a:115c:a1e0::f601:9830"
   domain_target_vps_3_tailscale_v4 = "100.104.117.97"
