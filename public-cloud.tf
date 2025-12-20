@@ -52,3 +52,14 @@ module "s3_restic_vps_backups" {
   versioning = false
   region     = "SBG"
 }
+
+### S3 for paperless
+
+module "s3_paperless" {
+  source = "./modules/s3"
+
+  name       = "paperless"
+  project_id = ovh_cloud_project.catch_all.id
+  encryption = true
+  versioning = false
+}
