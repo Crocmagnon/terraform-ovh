@@ -43,7 +43,7 @@ resource "ovh_domain_zone_record" "augendre_info_wallabag" {
   subdomain = "wallabag"
   fieldtype = "CNAME"
   ttl       = local.domain_long_ttl
-  target    = local.domain_target_vps_public
+  target    = local.domain_target_vps_3_public
 }
 
 resource "ovh_domain_zone_record" "augendre_info_mariage" {
