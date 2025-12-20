@@ -5,7 +5,7 @@ locals {
   ip_vps_2_v4                      = toset([for k, v in data.ovh_vps.vps_2.ips : k if strcontains(k, ".")])
   ip_vps_3_v4                      = toset([for k, v in data.ovh_vps.vps_3.ips : k if strcontains(k, ".")])
   ip_vps_3_v6                      = toset([for k, v in data.ovh_vps.vps_3.ips : k if strcontains(k, ":")])
-  domain_long_ttl                  = 600
+  domain_long_ttl                  = 86400
   domain_short_ttl                 = 600
   domain_target_vps_3_public       = "vps-3.augendre.info."
   domain_target_vps_3_tailscale_v4 = "100.104.117.97"
