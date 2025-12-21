@@ -8,8 +8,8 @@ locals {
   domain_long_ttl                  = 86400
   domain_short_ttl                 = 600
   domain_target_vps_3_public       = "vps-3.augendre.info."
-  domain_target_vps_3_tailscale_v4 = "100.104.117.97"
-  domain_target_vps_3_tailscale_v6 = "fd7a:115c:a1e0::ea01:7562"
+  domain_target_vps_3_tailscale_v4 = "100.82.177.24"
+  domain_target_vps_3_tailscale_v6 = "fd7a:115c:a1e0::aa01:b16a"
   domain_target_home_tailscale_v4  = "100.97.36.10"
   domain_target_home_tailscale_v6  = "fd7a:115c:a1e0::6b01:8e33"
 }
