@@ -2,7 +2,6 @@ locals {
   ip_home                          = "82.65.167.55"
   ip_cercie                        = "82.66.199.43"
   ip_cidr_home                     = "${local.ip_home}/32"
-  ip_vps_2_v4                      = toset([for k, v in data.ovh_vps.vps_2.ips : k if strcontains(k, ".")])
   ip_vps_3_v4                      = toset([for k, v in data.ovh_vps.vps_3.ips : k if strcontains(k, ".")])
   ip_vps_3_v6                      = toset([for k, v in data.ovh_vps.vps_3.ips : k if strcontains(k, ":")])
   domain_long_ttl                  = 86400
