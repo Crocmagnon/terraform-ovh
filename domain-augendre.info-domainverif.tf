@@ -24,5 +24,5 @@ resource "ovh_domain_zone_record" "augendre_info_5346028597" {
   subdomain = "_acme-challenge.hasscasa"
   fieldtype = "CNAME"
   ttl       = local.domain_long_ttl
-  target    = "\"_acme-challenge.qe7jfmivnxuislrlgljlour4eiv0vbe7.ui.nabu.casa.\""
+  target    = "_acme-challenge.qe7jfmivnxuislrlgljlour4eiv0vbe7.ui.nabu.casa."
 }
