@@ -3,8 +3,8 @@ module "augendre_info_test" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "test"
   ttl       = local.domain_short_ttl
-  ipv4      = local.domain_target_vps_3_tailscale_v4
-  ipv6      = local.domain_target_vps_3_tailscale_v6
+  ipv4      = local.domain_target_srv_1_tailscale_v4
+  ipv6      = local.domain_target_srv_1_tailscale_v6
 }
 
 module "augendre_info_paperless" {
@@ -12,8 +12,8 @@ module "augendre_info_paperless" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "paperless"
   ttl       = local.domain_short_ttl
-  ipv4      = local.domain_target_vps_3_tailscale_v4
-  ipv6      = local.domain_target_vps_3_tailscale_v6
+  ipv4      = local.domain_target_srv_1_tailscale_v4
+  ipv6      = local.domain_target_srv_1_tailscale_v6
 }
 
 module "augendre_info_star_vps_3" {
@@ -23,4 +23,13 @@ module "augendre_info_star_vps_3" {
   ttl       = local.domain_short_ttl
   ipv4      = local.domain_target_vps_3_tailscale_v4
   ipv6      = local.domain_target_vps_3_tailscale_v6
+}
+
+module "augendre_info_wildcard_srv_1" {
+  source    = "./modules/five_a_batteries"
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "*.srv-1"
+  ttl       = local.domain_short_ttl
+  ipv4      = local.domain_target_srv_1_tailscale_v4
+  ipv6      = local.domain_target_srv_1_tailscale_v6
 }

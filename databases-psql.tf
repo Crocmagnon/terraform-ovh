@@ -19,6 +19,15 @@ resource "ovh_hosting_privatedatabase_whitelist" "psql_vps_3" {
   sftp         = false
 }
 
+resource "ovh_hosting_privatedatabase_whitelist" "psql_srv_1" {
+  for_each     = local.ip_srv_1_v4
+  service_name = data.ovh_hosting_privatedatabase.psql.service_name
+  ip           = each.key
+  name         = "srv-1"
+  service      = true
+  sftp         = false
+}
+
 variable "psql_miniflux_password" {
   description = "miniflux password"
   type        = string
