@@ -3,7 +3,7 @@ resource "ovh_domain_zone_record" "augendre_info_cv" {
   subdomain = "cv-gabriel"
   fieldtype = "CNAME"
   ttl       = local.domain_long_ttl
-  target    = local.domain_target_vps_3_public
+  target    = local.domain_target_srv_1_public
 }
 
 resource "ovh_domain_zone_record" "augendre_info_static" {
@@ -11,7 +11,7 @@ resource "ovh_domain_zone_record" "augendre_info_static" {
   subdomain = "static"
   fieldtype = "CNAME"
   ttl       = local.domain_long_ttl
-  target    = local.domain_target_vps_3_public
+  target    = local.domain_target_srv_1_public
 }
 
 resource "ovh_domain_zone_record" "augendre_info_git" {
@@ -19,7 +19,7 @@ resource "ovh_domain_zone_record" "augendre_info_git" {
   subdomain = "git"
   fieldtype = "CNAME"
   ttl       = local.domain_long_ttl
-  target    = local.domain_target_vps_3_public
+  target    = local.domain_target_srv_1_public
 }
 
 resource "ovh_domain_zone_record" "augendre_info_mail" {
@@ -27,7 +27,7 @@ resource "ovh_domain_zone_record" "augendre_info_mail" {
   subdomain = "mail"
   fieldtype = "CNAME"
   ttl       = local.domain_long_ttl
-  target    = local.domain_target_vps_3_public
+  target    = local.domain_target_srv_1_public
 }
 
 resource "ovh_domain_zone_record" "augendre_info_reader" {
@@ -35,7 +35,7 @@ resource "ovh_domain_zone_record" "augendre_info_reader" {
   subdomain = "reader"
   fieldtype = "CNAME"
   ttl       = local.domain_long_ttl
-  target    = local.domain_target_vps_3_public
+  target    = local.domain_target_srv_1_public
 }
 
 resource "ovh_domain_zone_record" "augendre_info_wallabag" {
@@ -43,7 +43,7 @@ resource "ovh_domain_zone_record" "augendre_info_wallabag" {
   subdomain = "wallabag"
   fieldtype = "CNAME"
   ttl       = local.domain_long_ttl
-  target    = local.domain_target_vps_3_public
+  target    = local.domain_target_srv_1_public
 }
 
 resource "ovh_domain_zone_record" "augendre_info_mariage" {
@@ -51,5 +51,5 @@ resource "ovh_domain_zone_record" "augendre_info_mariage" {
   subdomain = "mariage"
   fieldtype = "CNAME"
   ttl       = local.domain_long_ttl
-  target    = local.domain_target_vps_3_public
+  target    = local.domain_target_srv_1_public
 }
