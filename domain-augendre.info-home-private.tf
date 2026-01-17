@@ -76,5 +76,5 @@ module "augendre_info_hass" {
   subdomain = "hass"
   ttl       = local.domain_short_ttl
   ipv4      = "192.168.0.9"
-  ipv6      = "2a01:e0a:325:a1c0:a510:a88a:2977:5433"
+  ipv6      = "2a01:e0a:fa3:ce60:1a7c:4237:fec6:1ae7"
 }
