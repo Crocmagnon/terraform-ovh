@@ -1,7 +1,6 @@
 locals {
-  ip_home                          = "82.65.167.55"
   ip_cercie                        = "82.66.199.43"
-  ip_cidr_home                     = "${local.ip_home}/32"
+  ip_cidr_home                     = "82.65.167.55/32"
   ip_vps_3_v4                      = toset([for k, v in data.ovh_vps.vps_3.ips : v if strcontains(v, ".")])
   ip_srv_1_v4                      = toset([for k, v in data.ovh_dedicated_server.srv_1.ips : trimsuffix(v, "/32") if strcontains(v, ".")])
   ip_srv_1_v6                      = toset([for k, v in data.ovh_dedicated_server.srv_1.ips : trimsuffix(v, "/128") if strcontains(v, ":")])
