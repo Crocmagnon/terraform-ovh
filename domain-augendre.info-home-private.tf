@@ -1,12 +1,3 @@
-module "augendre_info_5274823433" {
-  source    = "./modules/five_a_batteries"
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "plex"
-  ttl       = local.domain_short_ttl
-  ipv4      = local.domain_target_home_tailscale_v4
-  ipv6      = local.domain_target_home_tailscale_v6
-}
-
 module "augendre_info_5274823434" {
   source    = "./modules/five_a_batteries"
   zone      = data.ovh_domain_zone.augendre_info.name
@@ -47,24 +38,6 @@ module "augendre_info_jellyfin" {
   source    = "./modules/five_a_batteries"
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "jellyfin"
-  ttl       = local.domain_short_ttl
-  ipv4      = local.domain_target_home_tailscale_v4
-  ipv6      = local.domain_target_home_tailscale_v6
-}
-
-module "augendre_info_5281160975" {
-  source    = "./modules/five_a_batteries"
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "portainer"
-  ttl       = local.domain_short_ttl
-  ipv4      = local.domain_target_home_tailscale_v4
-  ipv6      = local.domain_target_home_tailscale_v6
-}
-
-module "augendre_info_5325568092" {
-  source    = "./modules/five_a_batteries"
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "prusalink"
   ttl       = local.domain_short_ttl
   ipv4      = local.domain_target_home_tailscale_v4
   ipv6      = local.domain_target_home_tailscale_v6

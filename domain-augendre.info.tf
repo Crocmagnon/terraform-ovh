@@ -68,14 +68,6 @@ resource "ovh_domain_zone_record" "augendre_info_5274823409" {
   target    = "master.doses.crocmagnon.codeberg.page."
 }
 
-resource "ovh_domain_zone_record" "augendre_info_5274823430" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "nginx"
-  fieldtype = "A"
-  ttl       = local.domain_long_ttl
-  target    = local.ip_home
-}
-
 resource "ovh_domain_zone_record" "augendre_info_5274823441" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "status"
