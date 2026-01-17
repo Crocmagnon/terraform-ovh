@@ -10,15 +10,6 @@ resource "ovh_hosting_privatedatabase_whitelist" "psql_home" {
   sftp         = false
 }
 
-resource "ovh_hosting_privatedatabase_whitelist" "psql_vps_3" {
-  for_each     = local.ip_vps_3_v4
-  service_name = data.ovh_hosting_privatedatabase.psql.service_name
-  ip           = each.key
-  name         = "vps-3"
-  service      = true
-  sftp         = false
-}
-
 resource "ovh_hosting_privatedatabase_whitelist" "psql_srv_1" {
   for_each     = local.ip_srv_1_v4
   service_name = data.ovh_hosting_privatedatabase.psql.service_name
