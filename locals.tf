@@ -6,8 +6,8 @@ locals {
   domain_long_ttl                  = 86400
   domain_short_ttl                 = 600
   domain_target_srv_1_public       = "srv-1.augendre.info."
-  domain_target_srv_1_tailscale_v4 = "100.90.33.70"
-  domain_target_srv_1_tailscale_v6 = "fd7a:115c:a1e0::c101:2185"
+  domain_target_srv_1_tailscale_v4 = "100.108.113.85"
+  domain_target_srv_1_tailscale_v6 = "fd7a:115c:a1e0::2501:7166"
   domain_target_home_tailscale_v4  = "100.97.36.10"
   domain_target_home_tailscale_v6  = "fd7a:115c:a1e0::6b01:8e33"
 }
