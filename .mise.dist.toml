@@ -7,5 +7,5 @@ OVH_APPLICATION_SECRET = "xx"
 OVH_CONSUMER_KEY = "xx"
 
 [tools]
-terraform = "1.10"
+terraform = "latest"
 tflint = "latest"
