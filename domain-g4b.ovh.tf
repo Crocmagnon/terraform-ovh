@@ -41,6 +41,15 @@ resource "ovh_domain_zone_record" "g4b_ovh_apex_v6" {
   target    = each.key
 }
 
+module "g4b_ovh_display" {
+  source    = "./modules/five_a_batteries"
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "display"
+  ttl       = local.domain_short_ttl
+  ipv4      = "192.168.0.8"
+  ipv6      = "2a01:e0a:fa3:ce60:ba27:ebff:fe95:8dd7"
+}
+
 
 # ----------------------------------------------------------------------
 # Migadu
