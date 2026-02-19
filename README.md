@@ -6,7 +6,7 @@ This contains my personal collection of terraform files managing my infrastructu
 
 ### CI
 
-A Github Action is configured to apply all state changes on pushes to main.
+A Forgejo Action is configured to apply all state changes on pushes to main.
 
 ### Locally
 
