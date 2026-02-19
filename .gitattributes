@@ -1,1 +1,2 @@
 secrets.auto.tfvars filter=git-crypt diff=git-crypt
+mise.toml filter=git-crypt diff=git-crypt
