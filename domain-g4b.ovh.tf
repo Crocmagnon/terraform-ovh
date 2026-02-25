@@ -41,6 +41,23 @@ resource "ovh_domain_zone_record" "g4b_ovh_apex_v6" {
   target    = each.key
 }
 
+resource "ovh_domain_zone_record" "g4b_ovh_visio_v4" {
+  for_each  = local.ip_srv_1_v4
+  zone      = data.ovh_domain_zone.g4b_ovh.name
+  subdomain = "visio"
+  fieldtype = "A"
+  ttl       = local.domain_short_ttl
+  target    = each.key
+}
+
+resource "ovh_domain_zone_record" "g4b_ovh_visio_v6" {
+  for_each  = local.ip_srv_1_v6
+  zone      = data.ovh_domain_zone.g4b_ovh.name
+  subdomain = "visio"
+  fieldtype = "AAAA"
+  ttl       = local.domain_short_ttl
+  target    = each.key
+}
 
 # ----------------------------------------------------------------------
 # Migadu
