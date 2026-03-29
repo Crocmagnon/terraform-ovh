@@ -47,9 +47,11 @@ module "augendre_info_hass" {
   source    = "./modules/five_a_batteries"
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "hass"
-  ttl       = local.domain_short_ttl
-  ipv4      = "192.168.0.9"
-  ipv6      = "2a01:e0a:fa3:ce60:1a7c:4237:fec6:1ae7"
+  ttl       = 60
+  ipv4      = "192.168.0.25"
+  ipv6      = "2a01:e0a:fa3:ce60:440:80a6:5a63:1497"
+  # ipv4      = "192.168.0.9"
+  # ipv6      = "2a01:e0a:fa3:ce60:1a7c:4237:fec6:1ae7"
 }
 
 module "augendre_info_display" {
