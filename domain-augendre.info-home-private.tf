@@ -48,7 +48,7 @@ module "augendre_info_hass" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "hass"
   ttl       = 60
-  ipv4      = "192.168.0.25"
+  ipv4      = "192.168.0.9"
   ipv6      = "2a01:e0a:fa3:ce60:440:80a6:5a63:1497"
   # ipv4      = "192.168.0.9"
   # ipv6      = "2a01:e0a:fa3:ce60:1a7c:4237:fec6:1ae7"
