@@ -1,0 +1,35 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Overview
+
+Personal Terraform configuration managing infrastructure on OVHcloud: DNS zones (augendre.info, coccomagnard.fr, g4b.ovh, gabnotes.org), S3 buckets, a dedicated server (srv-1), and PostgreSQL databases. State is stored in an OVH S3 backend. Secrets are encrypted with git-crypt.
+
+## Commands
+
+```bash
+terraform init          # Initialize providers (required first time)
+terraform fmt           # Format all .tf files
+terraform validate      # Validate configuration
+terraform plan          # Preview changes
+terraform apply         # Apply changes (CI does this on push to main)
+tflint --config=.tflint.hcl  # Lint
+```
+
+Tools are managed via `mise.toml` (terraform, tflint). Pre-commit hooks run `terraform_fmt`, `terraform_validate` (with `-lockfile=readonly`), and `terraform_tflint`.
+
+## Architecture
+
+- **Root `.tf` files**: Each file manages a specific concern. Domain files follow the pattern `domain-{domain}-{purpose}.tf` (e.g., `domain-augendre.info-vps-public.tf` for public DNS records). `locals.tf` centralizes IPs and common values.
+- **`modules/`**: Reusable modules — `s3` (buckets), `db` (PostgreSQL), `mailgun` and `migadu` (email DNS records), `five_a_batteries` (DNS A and AAAA records).
+- **`secrets.auto.tfvars`**: git-crypt encrypted. Contains sensitive variables auto-loaded by Terraform.
+- **`lifecycle-*.json` + `put-lifecycle`**: S3 bucket lifecycle policies applied via AWS CLI (not Terraform-managed).
+
+## CI
+
+Forgejo Actions (`.forgejo/workflows/terraform.yml`) runs on push to main: fmt check → init → validate → plan → apply. Secrets/vars are configured in Forgejo.
+
+## Setup
+
+Requires git-crypt unlock before `terraform init`. See README.md for unlock instructions (key stored in Bitwarden).
