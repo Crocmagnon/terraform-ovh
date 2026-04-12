@@ -49,9 +49,7 @@ module "augendre_info_hass" {
   subdomain = "hass"
   ttl       = 60
   ipv4      = "192.168.0.9"
-  ipv6      = "2a01:e0a:fa3:ce60:440:80a6:5a63:1497"
-  # ipv4      = "192.168.0.9"
-  # ipv6      = "2a01:e0a:fa3:ce60:1a7c:4237:fec6:1ae7"
+  ipv6      = "2a01:e0a:fa3:ce60:172f:e028:a3a1:8589"
 }
 
 module "augendre_info_display" {
