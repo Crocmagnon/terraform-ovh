@@ -30,22 +30,6 @@ resource "ovh_domain_zone_record" "augendre_info_mail" {
   target    = local.domain_target_srv_1_public
 }
 
-resource "ovh_domain_zone_record" "augendre_info_reader" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "reader"
-  fieldtype = "CNAME"
-  ttl       = local.domain_long_ttl
-  target    = local.domain_target_srv_1_public
-}
-
-resource "ovh_domain_zone_record" "augendre_info_wallabag" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "wallabag"
-  fieldtype = "CNAME"
-  ttl       = local.domain_long_ttl
-  target    = local.domain_target_srv_1_public
-}
-
 resource "ovh_domain_zone_record" "augendre_info_mariage" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "mariage"
