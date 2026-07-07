@@ -64,7 +64,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823409" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "doses"
   fieldtype = "CNAME"
-  ttl       = local.domain_long_ttl
+  ttl       = 60
   target    = "master.doses.crocmagnon.codeberg.page."
 }
 
@@ -96,7 +96,7 @@ resource "ovh_domain_zone_record" "augendre_info_go_cname" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "go"
   fieldtype = "CNAME"
-  ttl       = local.domain_long_ttl
+  ttl       = 60
   target    = "main.go_augendre_info.crocmagnon.codeberg.page."
 }
 
@@ -104,7 +104,7 @@ resource "ovh_domain_zone_record" "augendre_info_5302259536" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "qr"
   fieldtype = "CNAME"
-  ttl       = local.domain_long_ttl
+  ttl       = 60
   target    = "main.qrcode_web.crocmagnon.codeberg.page."
 }
 
@@ -112,7 +112,7 @@ resource "ovh_domain_zone_record" "augendre_info_5302259539" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "qrcode"
   fieldtype = "CNAME"
-  ttl       = local.domain_long_ttl
+  ttl       = 60
   target    = "main.qrcode_web.crocmagnon.codeberg.page."
 }
 
@@ -120,7 +120,7 @@ resource "ovh_domain_zone_record" "augendre_info_potain" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "potain"
   fieldtype = "CNAME"
-  ttl       = local.domain_long_ttl
+  ttl       = 60
   target    = "main.potain.crocmagnon.codeberg.page."
 }
 
@@ -128,7 +128,7 @@ resource "ovh_domain_zone_record" "augendre_info_anniv_lois" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "anniv-lois"
   fieldtype = "CNAME"
-  ttl       = local.domain_long_ttl
+  ttl       = 60
   target    = "main.anniv-lois.crocmagnon.codeberg.page."
 }
 
@@ -136,7 +136,7 @@ resource "ovh_domain_zone_record" "augendre_info_mobileconfig" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "mobileconfig"
   fieldtype = "CNAME"
-  ttl       = local.domain_long_ttl
+  ttl       = 60
   target    = "master.mobileconfig-generator.crocmagnon.codeberg.page."
 }
 
