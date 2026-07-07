@@ -60,14 +60,6 @@ resource "ovh_domain_zone_record" "augendre_info_apex_v6" {
   target    = each.key
 }
 
-resource "ovh_domain_zone_record" "augendre_info_5274823409" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "doses"
-  fieldtype = "CNAME"
-  ttl       = 60
-  target    = "master.doses.crocmagnon.codeberg.page."
-}
-
 resource "ovh_domain_zone_record" "augendre_info_5274823441" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "status"
@@ -92,52 +84,60 @@ resource "ovh_domain_zone_record" "augendre_info_5346028581" {
   target    = "qe7jfmivnxuislrlgljlour4eiv0vbe7.ui.nabu.casa."
 }
 
-resource "ovh_domain_zone_record" "augendre_info_go_cname" {
-  zone      = data.ovh_domain_zone.augendre_info.name
+module "augendre_info_go" {
+  source    = "./modules/codeberg_pages"
+  ttl       = 60
   subdomain = "go"
-  fieldtype = "CNAME"
-  ttl       = 60
-  target    = "main.go_augendre_info.crocmagnon.codeberg.page."
+  zone      = data.ovh_domain_zone.augendre_info.name
+  repo_url  = "https://codeberg.org/Crocmagnon/go_augendre_info.git"
 }
 
-resource "ovh_domain_zone_record" "augendre_info_5302259536" {
+module "augendre_info_doses" {
+  source    = "./modules/codeberg_pages"
+  ttl       = 60
+  subdomain = "doses"
   zone      = data.ovh_domain_zone.augendre_info.name
+  repo_url  = "https://codeberg.org/Crocmagnon/doses.git"
+}
+
+module "augendre_info_qr" {
+  source    = "./modules/codeberg_pages"
+  ttl       = 60
   subdomain = "qr"
-  fieldtype = "CNAME"
-  ttl       = 60
-  target    = "main.qrcode_web.crocmagnon.codeberg.page."
+  zone      = data.ovh_domain_zone.augendre_info.name
+  repo_url  = "https://codeberg.org/Crocmagnon/qrcode_web.git"
 }
 
-resource "ovh_domain_zone_record" "augendre_info_5302259539" {
-  zone      = data.ovh_domain_zone.augendre_info.name
+module "augendre_info_qrcode" {
+  source    = "./modules/codeberg_pages"
+  ttl       = 60
   subdomain = "qrcode"
-  fieldtype = "CNAME"
-  ttl       = 60
-  target    = "main.qrcode_web.crocmagnon.codeberg.page."
+  zone      = data.ovh_domain_zone.augendre_info.name
+  repo_url  = "https://codeberg.org/Crocmagnon/qrcode_web.git"
 }
 
-resource "ovh_domain_zone_record" "augendre_info_potain" {
-  zone      = data.ovh_domain_zone.augendre_info.name
+module "augendre_info_potain" {
+  source    = "./modules/codeberg_pages"
+  ttl       = 60
   subdomain = "potain"
-  fieldtype = "CNAME"
-  ttl       = 60
-  target    = "main.potain.crocmagnon.codeberg.page."
+  zone      = data.ovh_domain_zone.augendre_info.name
+  repo_url  = "https://codeberg.org/Crocmagnon/potain.git"
 }
 
-resource "ovh_domain_zone_record" "augendre_info_anniv_lois" {
-  zone      = data.ovh_domain_zone.augendre_info.name
+module "augendre_info_anniv_lois" {
+  source    = "./modules/codeberg_pages"
+  ttl       = 60
   subdomain = "anniv-lois"
-  fieldtype = "CNAME"
-  ttl       = 60
-  target    = "main.anniv-lois.crocmagnon.codeberg.page."
+  zone      = data.ovh_domain_zone.augendre_info.name
+  repo_url  = "https://codeberg.org/Crocmagnon/anniv-lois.git"
 }
 
-resource "ovh_domain_zone_record" "augendre_info_mobileconfig" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "mobileconfig"
-  fieldtype = "CNAME"
+module "augendre_info_mobileconfig" {
+  source    = "./modules/codeberg_pages"
   ttl       = 60
-  target    = "master.mobileconfig-generator.crocmagnon.codeberg.page."
+  subdomain = "mobileconfig"
+  zone      = data.ovh_domain_zone.augendre_info.name
+  repo_url  = "https://codeberg.org/Crocmagnon/mobileconfig-generator.git"
 }
 
 resource "ovh_domain_zone_record" "augendre_info_srv_1_v4" {
