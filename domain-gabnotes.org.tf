@@ -27,14 +27,14 @@ resource "ovh_domain_zone_record" "gabnotes_org_apex" {
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = ""
   fieldtype = "A"
-  ttl       = local.domain_long_ttl
+  ttl       = local.domain_short_ttl
   target    = "216.24.57.1" # pika.page
 }
 resource "ovh_domain_zone_record" "gabnotes_org_www" {
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = "www"
   fieldtype = "CNAME"
-  ttl       = local.domain_long_ttl
+  ttl       = local.domain_short_ttl
   target    = "pika.page."
 }
 
