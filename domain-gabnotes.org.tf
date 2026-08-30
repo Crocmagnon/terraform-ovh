@@ -23,19 +23,21 @@ resource "ovh_domain_zone_record" "gabnotes_org_5295328884" {
 # ----------------------------------------------------------------------
 # Web services
 # ----------------------------------------------------------------------
-resource "ovh_domain_zone_record" "gabnotes_org_apex" {
+module "gabnotes_org_apex" {
+  source    = "./modules/five_a_batteries"
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = ""
-  fieldtype = "A"
   ttl       = local.domain_short_ttl
-  target    = "216.24.57.1" # pika.page
+  ipv4      = one(local.ip_srv_1_v4)
+  ipv6      = one(local.ip_srv_1_v6)
 }
+
 resource "ovh_domain_zone_record" "gabnotes_org_www" {
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = "www"
   fieldtype = "CNAME"
   ttl       = local.domain_short_ttl
-  target    = "pika.page."
+  target    = local.domain_target_srv_1_public
 }
 
 
