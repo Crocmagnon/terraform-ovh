@@ -5,7 +5,7 @@ data "ovh_domain_zone" "augendre_info" {
 # ----------------------------------------------------------------------
 # NS
 # ----------------------------------------------------------------------
-resource "ovh_domain_zone_record" "augendre_info_5274823378" {
+resource "ovh_domain_zone_record" "augendre_info_ns1" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = ""
   fieldtype = "NS"
@@ -13,7 +13,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823378" {
   target    = "ns109.ovh.net."
 }
 
-resource "ovh_domain_zone_record" "augendre_info_5274823379" {
+resource "ovh_domain_zone_record" "augendre_info_ns2" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = ""
   fieldtype = "NS"
@@ -24,14 +24,14 @@ resource "ovh_domain_zone_record" "augendre_info_5274823379" {
 # ----------------------------------------------------------------------
 # CAA
 # ----------------------------------------------------------------------
-resource "ovh_domain_zone_record" "augendre_info_5274823383" {
+resource "ovh_domain_zone_record" "augendre_info_caa_letsencrypt" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = ""
   fieldtype = "CAA"
   ttl       = local.domain_long_ttl
   target    = "0 issue \"letsencrypt.org\""
 }
-resource "ovh_domain_zone_record" "augendre_info_5274823384" {
+resource "ovh_domain_zone_record" "augendre_info_caa_zerossl" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = ""
   fieldtype = "CAA"
@@ -60,7 +60,7 @@ resource "ovh_domain_zone_record" "augendre_info_apex_v6" {
   target    = each.key
 }
 
-resource "ovh_domain_zone_record" "augendre_info_5274823441" {
+resource "ovh_domain_zone_record" "augendre_info_status" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "status"
   fieldtype = "CNAME"
@@ -68,7 +68,7 @@ resource "ovh_domain_zone_record" "augendre_info_5274823441" {
   target    = "reports.hetrixtools.com."
 }
 
-resource "ovh_domain_zone_record" "augendre_info_5293296439" {
+resource "ovh_domain_zone_record" "augendre_info_cercie" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "cercie"
   fieldtype = "A"
@@ -76,7 +76,7 @@ resource "ovh_domain_zone_record" "augendre_info_5293296439" {
   target    = local.ip_cercie
 }
 
-resource "ovh_domain_zone_record" "augendre_info_5346028581" {
+resource "ovh_domain_zone_record" "augendre_info_hasscasa" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "hasscasa"
   fieldtype = "CNAME"

@@ -5,14 +5,14 @@ data "ovh_domain_zone" "g4b_ovh" {
 # ----------------------------------------------------------------------
 # NS
 # ----------------------------------------------------------------------
-resource "ovh_domain_zone_record" "g4b_ovh_5274823136" {
+resource "ovh_domain_zone_record" "g4b_ovh_ns1" {
   zone      = data.ovh_domain_zone.g4b_ovh.name
   subdomain = ""
   fieldtype = "NS"
   ttl       = local.domain_long_ttl
   target    = "dns11.ovh.net."
 }
-resource "ovh_domain_zone_record" "g4b_ovh_5274823137" {
+resource "ovh_domain_zone_record" "g4b_ovh_ns2" {
   zone      = data.ovh_domain_zone.g4b_ovh.name
   subdomain = ""
   fieldtype = "NS"

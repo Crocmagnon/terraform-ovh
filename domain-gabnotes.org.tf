@@ -5,14 +5,14 @@ data "ovh_domain_zone" "gabnotes_org" {
 # ----------------------------------------------------------------------
 # NS
 # ----------------------------------------------------------------------
-resource "ovh_domain_zone_record" "gabnotes_org_5295328883" {
+resource "ovh_domain_zone_record" "gabnotes_org_ns1" {
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = ""
   fieldtype = "NS"
   ttl       = local.domain_long_ttl
   target    = "ns111.ovh.net."
 }
-resource "ovh_domain_zone_record" "gabnotes_org_5295328884" {
+resource "ovh_domain_zone_record" "gabnotes_org_ns2" {
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = ""
   fieldtype = "NS"

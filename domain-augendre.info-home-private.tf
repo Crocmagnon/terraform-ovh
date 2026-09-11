@@ -1,4 +1,4 @@
-module "augendre_info_5274823434" {
+module "augendre_info_prowlarr" {
   source    = "./modules/five_a_batteries"
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "prowlarr"
@@ -7,7 +7,7 @@ module "augendre_info_5274823434" {
   ipv6      = local.domain_target_home_tailscale_v6
 }
 
-module "augendre_info_5274823436" {
+module "augendre_info_radarr" {
   source    = "./modules/five_a_batteries"
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "radarr"
@@ -16,7 +16,7 @@ module "augendre_info_5274823436" {
   ipv6      = local.domain_target_home_tailscale_v6
 }
 
-module "augendre_info_5274823439" {
+module "augendre_info_sonarr" {
   source    = "./modules/five_a_batteries"
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "sonarr"
@@ -25,7 +25,7 @@ module "augendre_info_5274823439" {
   ipv6      = local.domain_target_home_tailscale_v6
 }
 
-module "augendre_info_5274823444" {
+module "augendre_info_transmission" {
   source    = "./modules/five_a_batteries"
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "transmission"

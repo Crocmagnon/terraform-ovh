@@ -1,14 +1,14 @@
 # ----------------------------------------------------------------------
 # Domain verification
 # ----------------------------------------------------------------------
-resource "ovh_domain_zone_record" "coccomagnard_fr_5274823162" {
+resource "ovh_domain_zone_record" "coccomagnard_fr_migadu_verif" {
   zone      = data.ovh_domain_zone.coccomagnard_fr.name
   subdomain = ""
   fieldtype = "TXT"
   ttl       = local.domain_long_ttl
   target    = "\"hosted-email-verify=klobw3ff\""
 }
-resource "ovh_domain_zone_record" "coccomagnard_fr_5274823170" {
+resource "ovh_domain_zone_record" "coccomagnard_fr_github_pages_verif" {
   zone      = data.ovh_domain_zone.coccomagnard_fr.name
   subdomain = "_github-pages-challenge-crocmagnon"
   fieldtype = "TXT"
