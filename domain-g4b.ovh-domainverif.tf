@@ -1,4 +1,4 @@
-resource "ovh_domain_zone_record" "g4b_ovh_5274823142" {
+resource "ovh_domain_zone_record" "g4b_ovh_migadu_verif" {
   zone      = data.ovh_domain_zone.g4b_ovh.name
   subdomain = ""
   fieldtype = "TXT"
@@ -6,7 +6,7 @@ resource "ovh_domain_zone_record" "g4b_ovh_5274823142" {
   target    = "\"hosted-email-verify=pl8w0tbw\""
 }
 
-resource "ovh_domain_zone_record" "g4b_ovh_5274823145" {
+resource "ovh_domain_zone_record" "g4b_ovh_github_pages_verif" {
   zone      = data.ovh_domain_zone.g4b_ovh.name
   subdomain = "_github-pages-challenge-crocmagnon"
   fieldtype = "TXT"

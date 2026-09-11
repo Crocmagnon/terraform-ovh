@@ -5,14 +5,14 @@ data "ovh_domain_zone" "coccomagnard_fr" {
 # ----------------------------------------------------------------------
 # NS
 # ----------------------------------------------------------------------
-resource "ovh_domain_zone_record" "coccomagnard_fr_5274823156" {
+resource "ovh_domain_zone_record" "coccomagnard_fr_ns1" {
   zone      = data.ovh_domain_zone.coccomagnard_fr.name
   subdomain = ""
   fieldtype = "NS"
   ttl       = local.domain_long_ttl
   target    = "dns113.ovh.net."
 }
-resource "ovh_domain_zone_record" "coccomagnard_fr_5274823157" {
+resource "ovh_domain_zone_record" "coccomagnard_fr_ns2" {
   zone      = data.ovh_domain_zone.coccomagnard_fr.name
   subdomain = ""
   fieldtype = "NS"

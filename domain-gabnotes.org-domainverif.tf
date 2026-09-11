@@ -1,4 +1,4 @@
-resource "ovh_domain_zone_record" "gabnotes_org_5295328888" {
+resource "ovh_domain_zone_record" "gabnotes_org_google_verif" {
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = ""
   fieldtype = "TXT"
@@ -6,7 +6,7 @@ resource "ovh_domain_zone_record" "gabnotes_org_5295328888" {
   target    = "\"google-site-verification=_srmxXEmPxzvRHJCsw2pmoX7q2l8WMFIFZc8qgOuVIo\""
 }
 
-resource "ovh_domain_zone_record" "gabnotes_org_5295328889" {
+resource "ovh_domain_zone_record" "gabnotes_org_migadu_verif" {
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = ""
   fieldtype = "TXT"
@@ -14,7 +14,7 @@ resource "ovh_domain_zone_record" "gabnotes_org_5295328889" {
   target    = "\"hosted-email-verify=bdmii6z6\""
 }
 
-resource "ovh_domain_zone_record" "gabnotes_org_5295328894" {
+resource "ovh_domain_zone_record" "gabnotes_org_github_pages_verif" {
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = "_github-pages-challenge-crocmagnon"
   fieldtype = "TXT"
