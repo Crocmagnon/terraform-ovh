@@ -75,16 +75,3 @@ module "db_wallabag" {
   service_name = data.ovh_hosting_privatedatabase.psql.service_name
 }
 
-variable "psql_odoo_password" {
-  description = "odoo password"
-  type        = string
-  sensitive   = true
-}
-
-module "db_odoo" {
-  source = "./modules/db"
-
-  db_name      = "odoo"
-  db_password  = var.psql_odoo_password
-  service_name = data.ovh_hosting_privatedatabase.psql.service_name
-}
