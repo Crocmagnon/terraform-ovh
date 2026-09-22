@@ -19,17 +19,6 @@ module "s3_terraform" {
   versioning = true
 }
 
-### S3 for restic backups
-
-module "s3_restic_backups" {
-  source = "./modules/s3"
-
-  name       = "restic-backups"
-  project_id = ovh_cloud_project.catch_all.id
-  encryption = true
-  versioning = false
-}
-
 ### S3 for pCloud sync
 
 module "s3_pcloud_sync" {
@@ -39,30 +28,6 @@ module "s3_pcloud_sync" {
   project_id = ovh_cloud_project.catch_all.id
   encryption = true
   versioning = true
-}
-
-### S3 for restic vps backups
-
-module "s3_restic_vps_backups" {
-  source = "./modules/s3"
-
-  name       = "restic_vps-backups"
-  project_id = ovh_cloud_project.catch_all.id
-  encryption = true
-  versioning = false
-  region     = "SBG"
-}
-
-### S3 for restic vps-3
-
-module "s3_restic_vps_3" {
-  source = "./modules/s3"
-
-  name       = "restic-vps-3"
-  project_id = ovh_cloud_project.catch_all.id
-  encryption = true
-  versioning = false
-  region     = "SBG"
 }
 
 ### S3 for restic srv-1
