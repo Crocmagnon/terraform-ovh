@@ -10,4 +10,12 @@ locals {
   domain_target_srv_1_tailscale_v6 = "fd7a:115c:a1e0::2501:7166"
   domain_target_home_tailscale_v4  = "100.97.36.10"
   domain_target_home_tailscale_v6  = "fd7a:115c:a1e0::6b01:8e33"
+
+  lifecycle_expire_solo_delete_markers = {
+    id     = "expire-solo-delete-markers"
+    status = "enabled"
+    expiration = {
+      expired_object_delete_marker = true
+    }
+  }
 }

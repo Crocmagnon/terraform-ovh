@@ -24,7 +24,7 @@ Tools are managed via `mise.toml` (terraform, tflint). Pre-commit hooks run `ter
 - **Root `.tf` files**: Each file manages a specific concern. Domain files follow the pattern `domain-{domain}-{purpose}.tf` (e.g., `domain-augendre.info-vps-public.tf` for public DNS records). `locals.tf` centralizes IPs and common values.
 - **`modules/`**: Reusable modules — `s3` (buckets), `db` (PostgreSQL), `mailgun` and `migadu` (email DNS records), `five_a_batteries` (DNS A and AAAA records).
 - **`secrets.auto.tfvars`**: git-crypt encrypted. Contains sensitive variables auto-loaded by Terraform.
-- **`lifecycle-*.json` + `put-lifecycle`**: S3 bucket lifecycle policies applied via AWS CLI (not Terraform-managed).
+- **Bucket lifecycle policies**: managed in `public-cloud.tf` with `ovh_cloud_project_storage_object_bucket_lifecycle_configuration`, next to each bucket module.
 
 ## CI
 
