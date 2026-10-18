@@ -30,6 +30,8 @@ Tools are managed via `mise.toml` (terraform, tflint). Pre-commit hooks run `ter
 
 GitHub Actions (`.github/workflows/terraform.yml`) runs on push to main: fmt check → init → validate → plan → apply. The only secret is `GIT_CRYPT_KEY` (base64 git-crypt key), configured in the GitHub repo settings.
 
+Renovate (`renovate.json`) opens monthly update PRs for providers, GitHub Actions and pre-commit hooks.
+
 ## Setup
 
 Requires git-crypt unlock before `terraform init`. See README.md for unlock instructions (key stored in Bitwarden).
