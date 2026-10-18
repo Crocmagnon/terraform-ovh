@@ -84,60 +84,13 @@ resource "ovh_domain_zone_record" "augendre_info_hasscasa" {
   target    = "qe7jfmivnxuislrlgljlour4eiv0vbe7.ui.nabu.casa."
 }
 
-module "augendre_info_go" {
-  source    = "./modules/codeberg_pages"
-  ttl       = local.domain_short_ttl
-  subdomain = "go"
+resource "ovh_domain_zone_record" "augendre_info_github_pages" {
+  for_each  = toset(["go", "doses", "qr", "potain", "anniv-lois", "mobileconfig"])
   zone      = data.ovh_domain_zone.augendre_info.name
-  repo_url  = "https://codeberg.org/Crocmagnon/go_augendre_info.git"
-}
-
-module "augendre_info_doses" {
-  source    = "./modules/codeberg_pages"
+  subdomain = each.key
+  fieldtype = "CNAME"
   ttl       = local.domain_short_ttl
-  subdomain = "doses"
-  zone      = data.ovh_domain_zone.augendre_info.name
-  repo_url  = "https://codeberg.org/Crocmagnon/doses.git"
-}
-
-module "augendre_info_qr" {
-  source    = "./modules/codeberg_pages"
-  ttl       = local.domain_short_ttl
-  subdomain = "qr"
-  zone      = data.ovh_domain_zone.augendre_info.name
-  repo_url  = "https://codeberg.org/Crocmagnon/qrcode_web.git"
-}
-
-module "augendre_info_qrcode" {
-  source    = "./modules/codeberg_pages"
-  ttl       = local.domain_short_ttl
-  subdomain = "qrcode"
-  zone      = data.ovh_domain_zone.augendre_info.name
-  repo_url  = "https://codeberg.org/Crocmagnon/qrcode_web.git"
-}
-
-module "augendre_info_potain" {
-  source    = "./modules/codeberg_pages"
-  ttl       = local.domain_short_ttl
-  subdomain = "potain"
-  zone      = data.ovh_domain_zone.augendre_info.name
-  repo_url  = "https://codeberg.org/Crocmagnon/potain.git"
-}
-
-module "augendre_info_anniv_lois" {
-  source    = "./modules/codeberg_pages"
-  ttl       = local.domain_short_ttl
-  subdomain = "anniv-lois"
-  zone      = data.ovh_domain_zone.augendre_info.name
-  repo_url  = "https://codeberg.org/Crocmagnon/anniv-lois.git"
-}
-
-module "augendre_info_mobileconfig" {
-  source    = "./modules/codeberg_pages"
-  ttl       = local.domain_short_ttl
-  subdomain = "mobileconfig"
-  zone      = data.ovh_domain_zone.augendre_info.name
-  repo_url  = "https://codeberg.org/Crocmagnon/mobileconfig-generator.git"
+  target    = "crocmagnon.github.io."
 }
 
 resource "ovh_domain_zone_record" "augendre_info_srv_1_v4" {
