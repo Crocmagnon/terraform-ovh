@@ -12,7 +12,7 @@ concurrency:
 jobs:
   terraform:
     name: 'Terraform'
-    runs-on: codeberg-small
+    runs-on: ubuntu-latest
     env:
       GIT_CRYPT_KEY: ${{ secrets.GIT_CRYPT_KEY }}
 
@@ -34,10 +34,9 @@ jobs:
         git crypt unlock /tmp/git-crypt-key
 
     - name: Setup mise
-      uses: https://github.com/jdx/mise-action@v4.0.1
+      uses: jdx/mise-action@v4.0.1
       with:
         experimental: true
-        github_token: ${{ secrets.GH_TOKEN }}
 
     - name: Terraform Format
       run: terraform fmt -check
