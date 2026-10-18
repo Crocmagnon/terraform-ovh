@@ -24,6 +24,7 @@ read -s key # input bitwarden note content
 set tmp (mktemp)
 echo $key | base64 -d > $tmp
 git crypt unlock $tmp
+rm $tmp
 ```
 
 ### How to generate new secrets?
