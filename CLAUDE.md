@@ -28,7 +28,7 @@ Tools are managed via `mise.toml` (terraform, tflint). Pre-commit hooks run `ter
 
 ## CI
 
-Forgejo Actions (`.forgejo/workflows/terraform.yml`) runs on push to main: fmt check → init → validate → plan → apply. Secrets/vars are configured in Forgejo.
+GitHub Actions (`.github/workflows/terraform.yml`) runs on push to main: fmt check → init → validate → plan → apply. The only secret is `GIT_CRYPT_KEY` (base64 git-crypt key), configured in the GitHub repo settings.
 
 ## Setup
 
