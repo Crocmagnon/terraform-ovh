@@ -2,7 +2,7 @@ resource "ovh_domain_zone_record" "gabnotes_org_google_verif" {
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = ""
   fieldtype = "TXT"
-  ttl       = local.domain_long_ttl
+  ttl       = local.domain_ttl
   target    = "\"google-site-verification=_srmxXEmPxzvRHJCsw2pmoX7q2l8WMFIFZc8qgOuVIo\""
 }
 
@@ -10,7 +10,7 @@ resource "ovh_domain_zone_record" "gabnotes_org_migadu_verif" {
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = ""
   fieldtype = "TXT"
-  ttl       = local.domain_long_ttl
+  ttl       = local.domain_ttl
   target    = "\"hosted-email-verify=bdmii6z6\""
 }
 
@@ -18,6 +18,6 @@ resource "ovh_domain_zone_record" "gabnotes_org_github_pages_verif" {
   zone      = data.ovh_domain_zone.gabnotes_org.name
   subdomain = "_github-pages-challenge-crocmagnon"
   fieldtype = "TXT"
-  ttl       = local.domain_long_ttl
+  ttl       = local.domain_ttl
   target    = "\"ae7075db8b68ad8d9a16faa3ead22a\""
 }

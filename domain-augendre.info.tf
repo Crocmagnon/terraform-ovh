@@ -9,7 +9,7 @@ resource "ovh_domain_zone_record" "augendre_info_ns1" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = ""
   fieldtype = "NS"
-  ttl       = local.domain_long_ttl
+  ttl       = local.domain_ttl
   target    = "ns109.ovh.net."
 }
 
@@ -17,7 +17,7 @@ resource "ovh_domain_zone_record" "augendre_info_ns2" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = ""
   fieldtype = "NS"
-  ttl       = local.domain_long_ttl
+  ttl       = local.domain_ttl
   target    = "dns109.ovh.net."
 }
 
@@ -28,14 +28,14 @@ resource "ovh_domain_zone_record" "augendre_info_caa_letsencrypt" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = ""
   fieldtype = "CAA"
-  ttl       = local.domain_long_ttl
+  ttl       = local.domain_ttl
   target    = "0 issue \"letsencrypt.org\""
 }
 resource "ovh_domain_zone_record" "augendre_info_caa_zerossl" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = ""
   fieldtype = "CAA"
-  ttl       = local.domain_long_ttl
+  ttl       = local.domain_ttl
   target    = "0 issue \"zerossl.com\""
 }
 
@@ -47,7 +47,7 @@ resource "ovh_domain_zone_record" "augendre_info_apex_v4" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = ""
   fieldtype = "A"
-  ttl       = local.domain_long_ttl
+  ttl       = local.domain_ttl
   target    = each.key
 }
 
@@ -56,7 +56,7 @@ resource "ovh_domain_zone_record" "augendre_info_apex_v6" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = ""
   fieldtype = "AAAA"
-  ttl       = local.domain_long_ttl
+  ttl       = local.domain_ttl
   target    = each.key
 }
 
@@ -64,7 +64,7 @@ resource "ovh_domain_zone_record" "augendre_info_status" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "status"
   fieldtype = "CNAME"
-  ttl       = local.domain_long_ttl
+  ttl       = local.domain_ttl
   target    = "reports.hetrixtools.com."
 }
 
@@ -72,7 +72,7 @@ resource "ovh_domain_zone_record" "augendre_info_cercie" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "cercie"
   fieldtype = "A"
-  ttl       = local.domain_long_ttl
+  ttl       = local.domain_ttl
   target    = local.ip_cercie
 }
 
@@ -80,7 +80,7 @@ resource "ovh_domain_zone_record" "augendre_info_hasscasa" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "hasscasa"
   fieldtype = "CNAME"
-  ttl       = local.domain_long_ttl
+  ttl       = local.domain_ttl
   target    = "qe7jfmivnxuislrlgljlour4eiv0vbe7.ui.nabu.casa."
 }
 
@@ -89,7 +89,7 @@ resource "ovh_domain_zone_record" "augendre_info_github_pages" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = each.key
   fieldtype = "CNAME"
-  ttl       = local.domain_short_ttl
+  ttl       = local.domain_ttl
   target    = "crocmagnon.github.io."
 }
 
@@ -98,7 +98,7 @@ resource "ovh_domain_zone_record" "augendre_info_srv_1_v4" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "srv-1"
   fieldtype = "A"
-  ttl       = local.domain_long_ttl
+  ttl       = local.domain_ttl
   target    = each.key
 }
 
@@ -107,7 +107,7 @@ resource "ovh_domain_zone_record" "augendre_info_srv_1_v6" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "srv-1"
   fieldtype = "AAAA"
-  ttl       = local.domain_long_ttl
+  ttl       = local.domain_ttl
   target    = each.key
 }
 
@@ -115,7 +115,7 @@ resource "ovh_domain_zone_record" "augendre_info_voyages_lois" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = "voyages-lois"
   fieldtype = "CNAME"
-  ttl       = local.domain_short_ttl
+  ttl       = local.domain_ttl
   target    = "pika.page."
 }
 
@@ -126,7 +126,7 @@ resource "ovh_domain_zone_record" "augendre_info_voyages_lois" {
 module "augendre_info_migadu" {
   source = "./modules/migadu"
   zone   = data.ovh_domain_zone.augendre_info.name
-  ttl    = local.domain_long_ttl
+  ttl    = local.domain_ttl
 }
 
 
@@ -136,7 +136,7 @@ module "augendre_info_migadu" {
 module "augendre_info_mailgun" {
   source        = "./modules/mailgun"
   zone          = data.ovh_domain_zone.augendre_info.name
-  ttl           = local.domain_short_ttl
+  ttl           = local.domain_ttl
   endpoint      = "us"
   dmarc         = "v=DMARC1; p=quarantine; pct=100; fo=1; ri=3600; rua=mailto:dbbd0f84@dmarc.mailgun.org,mailto:c031cfb4@inbox.ondmarc.com; ruf=mailto:dbbd0f84@dmarc.mailgun.org,mailto:c031cfb4@inbox.ondmarc.com;"
   dkim_selector = "k1"

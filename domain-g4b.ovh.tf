@@ -9,14 +9,14 @@ resource "ovh_domain_zone_record" "g4b_ovh_ns1" {
   zone      = data.ovh_domain_zone.g4b_ovh.name
   subdomain = ""
   fieldtype = "NS"
-  ttl       = local.domain_long_ttl
+  ttl       = local.domain_ttl
   target    = "dns11.ovh.net."
 }
 resource "ovh_domain_zone_record" "g4b_ovh_ns2" {
   zone      = data.ovh_domain_zone.g4b_ovh.name
   subdomain = ""
   fieldtype = "NS"
-  ttl       = local.domain_long_ttl
+  ttl       = local.domain_ttl
   target    = "ns11.ovh.net."
 }
 
@@ -28,7 +28,7 @@ resource "ovh_domain_zone_record" "g4b_ovh_apex_v4" {
   zone      = data.ovh_domain_zone.g4b_ovh.name
   subdomain = ""
   fieldtype = "A"
-  ttl       = local.domain_long_ttl
+  ttl       = local.domain_ttl
   target    = each.key
 }
 
@@ -37,7 +37,7 @@ resource "ovh_domain_zone_record" "g4b_ovh_apex_v6" {
   zone      = data.ovh_domain_zone.g4b_ovh.name
   subdomain = ""
   fieldtype = "AAAA"
-  ttl       = local.domain_long_ttl
+  ttl       = local.domain_ttl
   target    = each.key
 }
 
@@ -46,7 +46,7 @@ resource "ovh_domain_zone_record" "g4b_ovh_visio_v4" {
   zone      = data.ovh_domain_zone.g4b_ovh.name
   subdomain = "visio"
   fieldtype = "A"
-  ttl       = local.domain_short_ttl
+  ttl       = local.domain_ttl
   target    = each.key
 }
 
@@ -55,7 +55,7 @@ resource "ovh_domain_zone_record" "g4b_ovh_visio_v6" {
   zone      = data.ovh_domain_zone.g4b_ovh.name
   subdomain = "visio"
   fieldtype = "AAAA"
-  ttl       = local.domain_short_ttl
+  ttl       = local.domain_ttl
   target    = each.key
 }
 
@@ -65,5 +65,5 @@ resource "ovh_domain_zone_record" "g4b_ovh_visio_v6" {
 module "g4b_ovh_migadu" {
   source = "./modules/migadu"
   zone   = data.ovh_domain_zone.g4b_ovh.name
-  ttl    = local.domain_long_ttl
+  ttl    = local.domain_ttl
 }
