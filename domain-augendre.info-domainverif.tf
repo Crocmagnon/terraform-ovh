@@ -19,10 +19,3 @@ resource "ovh_domain_zone_record" "augendre_info_google_verif" {
   ttl       = local.domain_ttl
   target    = "\"google-site-verification=x2oRItA0r6paeQM1fW9yYu63Dm0AzoMSUCP5CtS-WhY\""
 }
-resource "ovh_domain_zone_record" "augendre_info_hasscasa_acme" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "_acme-challenge.hasscasa"
-  fieldtype = "CNAME"
-  ttl       = local.domain_ttl
-  target    = "_acme-challenge.qe7jfmivnxuislrlgljlour4eiv0vbe7.ui.nabu.casa."
-}

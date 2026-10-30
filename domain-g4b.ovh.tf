@@ -21,6 +21,24 @@ resource "ovh_domain_zone_record" "g4b_ovh_ns2" {
 }
 
 # ----------------------------------------------------------------------
+# CAA
+# ----------------------------------------------------------------------
+resource "ovh_domain_zone_record" "g4b_ovh_caa_letsencrypt" {
+  zone      = data.ovh_domain_zone.g4b_ovh.name
+  subdomain = ""
+  fieldtype = "CAA"
+  ttl       = local.domain_ttl
+  target    = "0 issue \"letsencrypt.org; accounturi=https://acme-v02.api.letsencrypt.org/acme/acct/2973688846\""
+}
+resource "ovh_domain_zone_record" "g4b_ovh_caa_nowildcard" {
+  zone      = data.ovh_domain_zone.g4b_ovh.name
+  subdomain = ""
+  fieldtype = "CAA"
+  ttl       = local.domain_ttl
+  target    = "0 issuewild \";\""
+}
+
+# ----------------------------------------------------------------------
 # Web services
 # ----------------------------------------------------------------------
 resource "ovh_domain_zone_record" "g4b_ovh_apex_v4" {
