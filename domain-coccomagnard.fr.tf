@@ -22,6 +22,31 @@ resource "ovh_domain_zone_record" "coccomagnard_fr_ns2" {
 
 
 # ----------------------------------------------------------------------
+# CAA
+# ----------------------------------------------------------------------
+resource "ovh_domain_zone_record" "coccomagnard_fr_caa_letsencrypt" {
+  zone      = data.ovh_domain_zone.coccomagnard_fr.name
+  subdomain = ""
+  fieldtype = "CAA"
+  ttl       = local.domain_ttl
+  target    = "0 issue \"letsencrypt.org\""
+}
+resource "ovh_domain_zone_record" "coccomagnard_fr_caa_google" {
+  zone      = data.ovh_domain_zone.coccomagnard_fr.name
+  subdomain = ""
+  fieldtype = "CAA"
+  ttl       = local.domain_ttl
+  target    = "0 issue \"pki.goog\""
+}
+resource "ovh_domain_zone_record" "coccomagnard_fr_caa_nowildcard" {
+  zone      = data.ovh_domain_zone.coccomagnard_fr.name
+  subdomain = ""
+  fieldtype = "CAA"
+  ttl       = local.domain_ttl
+  target    = "0 issuewild \";\""
+}
+
+# ----------------------------------------------------------------------
 # Subdomains
 # ----------------------------------------------------------------------
 resource "ovh_domain_zone_record" "coccomagnard_fr_voyages" {

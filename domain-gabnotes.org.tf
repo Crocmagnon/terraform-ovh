@@ -21,6 +21,24 @@ resource "ovh_domain_zone_record" "gabnotes_org_ns2" {
 }
 
 # ----------------------------------------------------------------------
+# CAA
+# ----------------------------------------------------------------------
+resource "ovh_domain_zone_record" "gabnotes_org_caa_letsencrypt" {
+  zone      = data.ovh_domain_zone.gabnotes_org.name
+  subdomain = ""
+  fieldtype = "CAA"
+  ttl       = local.domain_ttl
+  target    = "0 issue \"letsencrypt.org; accounturi=https://acme-v02.api.letsencrypt.org/acme/acct/2973688846\""
+}
+resource "ovh_domain_zone_record" "gabnotes_org_caa_nowildcard" {
+  zone      = data.ovh_domain_zone.gabnotes_org.name
+  subdomain = ""
+  fieldtype = "CAA"
+  ttl       = local.domain_ttl
+  target    = "0 issuewild \";\""
+}
+
+# ----------------------------------------------------------------------
 # Web services
 # ----------------------------------------------------------------------
 module "gabnotes_org_apex" {

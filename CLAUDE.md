@@ -24,6 +24,7 @@ Tools are managed via `mise.toml` (terraform, tflint). Pre-commit hooks run `ter
 - **Root `.tf` files**: Each file manages a specific concern. Domain files follow the pattern `domain-{domain}-{purpose}.tf` (e.g., `domain-augendre.info-vps-public.tf` for public DNS records). `locals.tf` centralizes IPs and common values.
 - **`modules/`**: Reusable modules — `s3` (buckets), `db` (PostgreSQL), `mailgun` and `migadu` (email DNS records), `five_a_batteries` (DNS A and AAAA records).
 - **`secrets.auto.tfvars`**: git-crypt encrypted. Contains sensitive variables auto-loaded by Terraform.
+- **CAA records**: every zone allows only the CAs its hosts use, and forbids wildcards. srv-1 (Caddy) uses Let's Encrypt only; pika.page (Render) also uses Google Trust Services (`pki.goog`). `accounturi` pins srv-1's ACME account, so it only fits zones served by srv-1 alone (`g4b.ovh`, `gabnotes.org`): CNAMEs to GitHub Pages, pika or HetrixTools inherit the apex CAA. Check a new host's issuer before pointing a record at it.
 - **Bucket lifecycle policies**: managed in `public-cloud.tf` with `ovh_cloud_project_storage_object_bucket_lifecycle_configuration`, next to each bucket module.
 
 ## CI

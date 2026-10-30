@@ -31,12 +31,12 @@ resource "ovh_domain_zone_record" "augendre_info_caa_letsencrypt" {
   ttl       = local.domain_ttl
   target    = "0 issue \"letsencrypt.org\""
 }
-resource "ovh_domain_zone_record" "augendre_info_caa_zerossl" {
+resource "ovh_domain_zone_record" "augendre_info_caa_nowildcard" {
   zone      = data.ovh_domain_zone.augendre_info.name
   subdomain = ""
   fieldtype = "CAA"
   ttl       = local.domain_ttl
-  target    = "0 issue \"zerossl.com\""
+  target    = "0 issuewild \";\""
 }
 
 # ----------------------------------------------------------------------

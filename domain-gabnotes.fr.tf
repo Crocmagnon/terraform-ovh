@@ -26,6 +26,31 @@ resource "ovh_domain_zone_record" "gabnotes_fr_ns2" {
 }
 
 # ----------------------------------------------------------------------
+# CAA
+# ----------------------------------------------------------------------
+resource "ovh_domain_zone_record" "gabnotes_fr_caa_letsencrypt" {
+  zone      = data.ovh_domain_zone.gabnotes_fr.name
+  subdomain = ""
+  fieldtype = "CAA"
+  ttl       = local.domain_ttl
+  target    = "0 issue \"letsencrypt.org\""
+}
+resource "ovh_domain_zone_record" "gabnotes_fr_caa_google" {
+  zone      = data.ovh_domain_zone.gabnotes_fr.name
+  subdomain = ""
+  fieldtype = "CAA"
+  ttl       = local.domain_ttl
+  target    = "0 issue \"pki.goog\""
+}
+resource "ovh_domain_zone_record" "gabnotes_fr_caa_nowildcard" {
+  zone      = data.ovh_domain_zone.gabnotes_fr.name
+  subdomain = ""
+  fieldtype = "CAA"
+  ttl       = local.domain_ttl
+  target    = "0 issuewild \";\""
+}
+
+# ----------------------------------------------------------------------
 # Web services
 # ----------------------------------------------------------------------
 resource "ovh_domain_zone_record" "gabnotes_fr_apex" {
