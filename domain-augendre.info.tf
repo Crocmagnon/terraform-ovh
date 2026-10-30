@@ -76,14 +76,6 @@ resource "ovh_domain_zone_record" "augendre_info_cercie" {
   target    = local.ip_cercie
 }
 
-resource "ovh_domain_zone_record" "augendre_info_hasscasa" {
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "hasscasa"
-  fieldtype = "CNAME"
-  ttl       = local.domain_ttl
-  target    = "qe7jfmivnxuislrlgljlour4eiv0vbe7.ui.nabu.casa."
-}
-
 resource "ovh_domain_zone_record" "augendre_info_github_pages" {
   for_each  = toset(["go", "doses", "qr", "potain", "anniv-lois", "mobileconfig"])
   zone      = data.ovh_domain_zone.augendre_info.name
