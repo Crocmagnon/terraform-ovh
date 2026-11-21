@@ -75,3 +75,17 @@ module "db_wallabag" {
   service_name = data.ovh_hosting_privatedatabase.psql.service_name
 }
 
+
+variable "psql_readeck_password" {
+  description = "readeck password"
+  type        = string
+  sensitive   = true
+}
+
+module "db_readeck" {
+  source = "./modules/db"
+
+  db_name      = "readeck"
+  db_password  = var.psql_readeck_password
+  service_name = data.ovh_hosting_privatedatabase.psql.service_name
+}
