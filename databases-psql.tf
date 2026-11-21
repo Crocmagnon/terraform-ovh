@@ -33,20 +33,6 @@ module "db_miniflux" {
   service_name = data.ovh_hosting_privatedatabase.psql.service_name
 }
 
-variable "psql_manuels_password" {
-  description = "manuels password"
-  type        = string
-  sensitive   = true
-}
-
-module "db_manuels" {
-  source = "./modules/db"
-
-  db_name      = "manuels"
-  db_password  = var.psql_manuels_password
-  service_name = data.ovh_hosting_privatedatabase.psql.service_name
-}
-
 variable "psql_paperless_password" {
   description = "paperless password"
   type        = string
