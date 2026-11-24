@@ -47,21 +47,6 @@ module "db_paperless" {
   service_name = data.ovh_hosting_privatedatabase.psql.service_name
 }
 
-variable "psql_wallabag_password" {
-  description = "wallabag password"
-  type        = string
-  sensitive   = true
-}
-
-module "db_wallabag" {
-  source = "./modules/db"
-
-  db_name      = "wallabag"
-  db_password  = var.psql_wallabag_password
-  service_name = data.ovh_hosting_privatedatabase.psql.service_name
-}
-
-
 variable "psql_readeck_password" {
   description = "readeck password"
   type        = string

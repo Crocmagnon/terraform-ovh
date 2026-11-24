@@ -34,15 +34,6 @@ module "augendre_info_readeck" {
   ipv6      = local.domain_target_srv_1_tailscale_v6
 }
 
-module "augendre_info_wallabag" {
-  source    = "./modules/five_a_batteries"
-  zone      = data.ovh_domain_zone.augendre_info.name
-  subdomain = "wallabag"
-  ttl       = local.domain_ttl
-  ipv4      = local.domain_target_srv_1_tailscale_v4
-  ipv6      = local.domain_target_srv_1_tailscale_v6
-}
-
 module "augendre_info_wildcard_srv_1" {
   source    = "./modules/five_a_batteries"
   zone      = data.ovh_domain_zone.augendre_info.name
