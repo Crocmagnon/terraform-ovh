@@ -76,3 +76,13 @@ module "augendre_info_auth_srv_1" {
   ipv4      = one(local.ip_srv_1_v4)
   ipv6      = one(local.ip_srv_1_v6)
 }
+
+# Services « internes » publiés sans Tailscale, sans jolie URL (ex. kosync.srv-1-pub) : Caddy ne
+# répond qu'aux noms qu'il déclare, et chaque vhost ne publie que les chemins utiles.
+resource "ovh_domain_zone_record" "augendre_info_wildcard_srv_1_pub" {
+  zone      = data.ovh_domain_zone.augendre_info.name
+  subdomain = "*.srv-1-pub"
+  fieldtype = "CNAME"
+  ttl       = local.domain_ttl
+  target    = local.domain_target_srv_1_public
+}
